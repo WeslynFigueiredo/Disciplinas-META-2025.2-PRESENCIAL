@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÓDULO 1 - Banco de Dados II - DDL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header com Logo e Progresso -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="module-info">
+                    <img src="logo.png" alt="Logo da META" id="metaLogoImage">
+                </div>
+            </div>
+            <div class="progress-section">
+                <div class="progress-text" id="progressText">Slide 1 de 22</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar" style="width: 4.55%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- SLIDE 1: Capa -->
+        <div class="slide" data-slide="1">
+            <div class="slide-content title-slide">
+                <h1 class="main-title">MÓDULO 1</h1>
+                <h2 class="main-subtitle">Banco de Dados II - DDL</h2>
+                <p class="subtitle">Construindo a Estrutura do Banco de Dados</p>
+                <div class="icon-large">🗄️</div>
+                <p class="intro-text">Aprenda a usar comandos DDL para criar, modificar e gerenciar a estrutura do seu banco de dados</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Objetivos -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-title">Objetivos de Aprendizagem</h2>
+                <p>Ao final deste módulo, você será capaz de:</p>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-icon">🎯</div>
+                        <div class="concept-name">Definição DDL</div>
+                        <p>Compreender o papel da linguagem DDL</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">➕</div>
+                        <div class="concept-name">CREATE</div>
+                        <p>Criar tabelas com constraints</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">✏️</div>
+                        <div class="concept-name">ALTER</div>
+                        <p>Modificar estruturas existentes</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">🗑️</div>
+                        <div class="concept-name">DROP/TRUNCATE</div>
+                        <p>Remover objetos e dados</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">💻</div>
+                        <div class="concept-name">Prática</div>
+                        <p>Resolver problemas com SQL</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">📋</div>
+                        <div class="concept-name">Segurança</div>
+                        <p>Boas práticas em DDL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Definição DDL -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2 class="slide-title">1. Definição e Papel da Linguagem DDL</h2>
+
+                <div class="content-box">
+                    <h3>O que é DDL?</h3>
+                    <p><strong>DDL (Data Definition Language)</strong> é a parte do SQL responsável por <strong>DEFINIR E GERENCIAR a ESTRUTURA</strong> (schema) do banco de dados.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Objetos que DDL Cria</h3>
+                    <ul>
+                        <li>📊 <strong>Tabelas</strong> - Estrutura de armazenamento de dados</li>
+                        <li>🔍 <strong>Índices</strong> - Otimização de buscas</li>
+                        <li>👤 <strong>Usuários</strong> - Controle de acesso</li>
+                        <li>🛡️ <strong>Constraints</strong> - Restrições de dados</li>
+                        <li>👁️ <strong>Views</strong> - Consultas pré-definidas</li>
+                    </ul>
+                </div>
+
+                <div class="content-box analogia">
+                    <h3>💡 Analogia: DDL vs DML</h3>
+                    <p><strong>DDL = PLANTA BAIXA DA CONSTRUÇÃO</strong> (define como será)</p>
+                    <p><strong>DML = MOBILIÁRIO</strong> (o que entra dentro)</p>
+                    <p>DDL cuida da <strong>estrutura</strong>, DML cuida do <strong>conteúdo</strong></p>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-title">Comparação: DDL vs DML vs DCL</div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>DDL</th>
+                                <th>DML</th>
+                                <th>DCL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>O que faz</strong></td>
+                                <td>Define estrutura</td>
+                                <td>Manipula dados</td>
+                                <td>Controla acesso</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Comandos</strong></td>
+                                <td>CREATE, ALTER, DROP</td>
+                                <td>INSERT, UPDATE, DELETE</td>
+                                <td>GRANT, REVOKE</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Afeta</strong></td>
+                                <td>Schema do BD</td>
+                                <td>Registros da tabela</td>
+                                <td>Permissões</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: CREATE -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title">2. Comando CREATE - Criando Novos Objetos</h2>
+
+                <div class="content-box">
+                    <h3>Propósito</h3>
+                    <p>O comando <strong>CREATE</strong> cria NOVOS objetos dentro do banco de dados.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Objetos que Podem Ser Criados</h3>
+                    <ul>
+                        <li><strong>Tabelas</strong> - Storage de dados estruturado</li>
+                        <li><strong>Bancos de Dados</strong> - Container de tabelas</li>
+                        <li><strong>Índices</strong> - Otimização de queries</li>
+                        <li><strong>Views</strong> - Tabelas virtuais</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>Sintaxe Geral</h3>
+                    <pre><code>CREATE [OBJECT_TYPE] ObjectName (properties)</code></pre>
+                </div>
+
+                <div class="content-box foco">
+                    <h3>🎯 Foco: CREATE TABLE</h3>
+                    <p>Este é o comando DDL mais importante! Você o usará para criar tabelas que armazenarão seus dados.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Tipos de Dados -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2 class="slide-title">Tipos de Dados Essenciais</h2>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🔢</div>
+                            <div class="concept-name">INT</div>
+                        </div>
+                        <p>Números inteiros. Ex: ID, Quantidade</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">📝</div>
+                            <div class="concept-name">VARCHAR(n)</div>
+                        </div>
+                        <p>Texto variável até n caracteres. Ex: Nome, Email</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">📝</div>
+                            <div class="concept-name">CHAR(n)</div>
+                        </div>
+                        <p>Texto fixo com n caracteres. Ex: CPF, Código</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">📅</div>
+                            <div class="concept-name">DATE</div>
+                        </div>
+                        <p>Data no formato YYYY-MM-DD</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">✅</div>
+                            <div class="concept-name">BOOLEAN</div>
+                        </div>
+                        <p>Verdadeiro/Falso (TRUE/FALSE)</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">💰</div>
+                            <div class="concept-name">DECIMAL(p,s)</div>
+                        </div>
+                        <p>Números com decimais. Ex: Preço</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Constraints -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2 class="slide-title">Restrições de Coluna (Constraints)</h2>
+
+                <div class="content-box constraints-box">
+                    <h3>🔑 PRIMARY KEY (PK)</h3>
+                    <p>Identifica <strong>UNICAMENTE</strong> cada linha na tabela.</p>
+                    <ul>
+                        <li>✓ Valores únicos (não repetem)</li>
+                        <li>✓ Não pode ser NULL</li>
+                        <li>✓ Uma tabela tem apenas 1 PK</li>
+                        <li>✓ Acelera buscas</li>
+                    </ul>
+                    <p><strong>Analogia:</strong> Como um NÚMERO DE IDENTIDADE (RG/CPF)</p>
+                </div>
+
+                <div class="content-box constraints-box">
+                    <h3>⚠️ NOT NULL</h3>
+                    <p>Valor <strong>OBRIGATÓRIO</strong> - não pode estar em branco.</p>
+                    <ul>
+                        <li>✓ Garante que coluna sempre tem valor</li>
+                        <li>✓ Validação importante de dados</li>
+                    </ul>
+                </div>
+
+                <div class="content-box constraints-box">
+                    <h3>🔓 UNIQUE</h3>
+                    <p>Todos os valores devem ser <strong>DIFERENTES</strong>.</p>
+                    <ul>
+                        <li>✓ Pode ter múltiplas colunas UNIQUE</li>
+                        <li>✓ Diferente de PK: pode ter NULL</li>
+                    </ul>
+                </div>
+
+                <div class="content-box constraints-box">
+                    <h3>📌 DEFAULT</h3>
+                    <p>Valor <strong>PADRÃO</strong> se nenhum valor for fornecido.</p>
+                    <ul>
+                        <li>✓ Simplifica inserções</li>
+                        <li>✓ Garante valor inicial</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: CREATE TABLE Exemplo 1 -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2 class="slide-title">2.2 Exemplo: CREATE TABLE Autores</h2>
+
+                <div class="content-box code-box">
+                    <h3>Código SQL Completo</h3>
+                    <pre><code>CREATE TABLE Autores (
+  ID_Autor INT PRIMARY KEY AUTO_INCREMENT,
+  Nome VARCHAR(100) NOT NULL,
+  Nacionalidade VARCHAR(50),
+  Email VARCHAR(100) UNIQUE,
+  Ativo BOOLEAN DEFAULT TRUE
+);</code></pre>
+                </div>
+
+                <div class="content-box">
+                    <h3>Explicação Linha por Linha</h3>
+                    <ul>
+                        <li><strong>CREATE TABLE Autores</strong> - Cria nova tabela chamada 'Autores'</li>
+                        <li><strong>ID_Autor INT PRIMARY KEY AUTO_INCREMENT</strong> - ID único que incrementa automaticamente</li>
+                        <li><strong>Nome VARCHAR(100) NOT NULL</strong> - Nome obrigatório, até 100 caracteres</li>
+                        <li><strong>Nacionalidade VARCHAR(50)</strong> - Nacionalidade opcional (pode ser NULL)</li>
+                        <li><strong>Email VARCHAR(100) UNIQUE</strong> - Cada email deve ser diferente</li>
+                        <li><strong>Ativo BOOLEAN DEFAULT TRUE</strong> - Flag booleana, padrão TRUE</li>
+                    </ul>
+                </div>
+
+                <div class="content-box highlight">
+                    <h3>💡 Pontos-Chave</h3>
+                    <p>✓ <strong>PRIMARY KEY</strong> garante ID único para cada autor<br>
+                    ✓ <strong>NOT NULL</strong> força valor obrigatório<br>
+                    ✓ <strong>UNIQUE</strong> garante emails diferentes<br>
+                    ✓ <strong>DEFAULT</strong> pré-preenche com valor comum</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: CREATE TABLE Exemplo 2 -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2 class="slide-title">Exemplo 2: Tabela de Produtos</h2>
+
+                <div class="content-box code-box">
+                    <h3>Código SQL com Múltiplas Constraints</h3>
+                    <pre><code>CREATE TABLE Produtos (
+  ID_Produto INT PRIMARY KEY AUTO_INCREMENT,
+  Nome VARCHAR(150) NOT NULL,
+  Categoria VARCHAR(50) NOT NULL,
+  Preco DECIMAL(10, 2) NOT NULL,
+  Estoque INT DEFAULT 0,
+  DataCadastro DATE NOT NULL,
+  Descricao TEXT,
+  Ativo BOOLEAN DEFAULT TRUE
+);</code></pre>
+                </div>
+
+                <div class="content-box">
+                    <h3>Detalhes Importantes</h3>
+                    <ul>
+                        <li><strong>ID_Produto INT PRIMARY KEY AUTO_INCREMENT</strong> - ID único auto-incrementa (1, 2, 3...)</li>
+                        <li><strong>Nome VARCHAR(150) NOT NULL</strong> - Nome obrigatório, até 150 caracteres</li>
+                        <li><strong>Preco DECIMAL(10, 2) NOT NULL</strong> - Preço com 2 casas decimais, obrigatório</li>
+                        <li><strong>Estoque INT DEFAULT 0</strong> - Quantidade estoque, padrão é 0</li>
+                        <li><strong>DataCadastro DATE NOT NULL</strong> - Data obrigatória de criação</li>
+                        <li><strong>Descricao TEXT</strong> - Descrição sem limite (tipo TEXT)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: ALTER TABLE -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2 class="slide-title">3. Comando ALTER - Modificando a Estrutura</h2>
+
+                <div class="content-box">
+                    <h3>Propósito</h3>
+                    <p>O comando <strong>ALTER</strong> modifica a ESTRUTURA de objetos EXISTENTES <strong>sem perder dados</strong>.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>✨ Diferença Importante</h3>
+                    <p><strong>ALTER</strong> modifica (ajusta), não recria a tabela!</p>
+                </div>
+
+                <div class="content-box operacoes">
+                    <h3>Três Operações Principais</h3>
+
+                    <div class="operacao-item">
+                        <h4>1️⃣ ADD COLUMN - Adicionar Coluna</h4>
+                        <pre><code>ALTER TABLE NomeTabela ADD COLUMN NomeColuna TipoDados</code></pre>
+                        <p>Exemplo: <code>ALTER TABLE Autores ADD COLUMN Telefone VARCHAR(20)</code></p>
+                    </div>
+
+                    <div class="operacao-item">
+                        <h4>2️⃣ DROP COLUMN - Remover Coluna</h4>
+                        <pre><code>ALTER TABLE NomeTabela DROP COLUMN NomeColuna</code></pre>
+                        <p>Exemplo: <code>ALTER TABLE Autores DROP COLUMN Nacionalidade</code></p>
+                        <p><strong>⚠️ Aviso:</strong> Dados na coluna são PERDIDOS</p>
+                    </div>
+
+                    <div class="operacao-item">
+                        <h4>3️⃣ MODIFY COLUMN - Modificar Tipo</h4>
+                        <pre><code>ALTER TABLE NomeTabela MODIFY COLUMN NomeColuna NovoTipo</code></pre>
+                        <p>Exemplo: <code>ALTER TABLE Autores MODIFY COLUMN Nome VARCHAR(200)</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: ALTER ADD COLUMN -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2 class="slide-title">ALTER TABLE: Adicionando Coluna</h2>
+
+                <div class="content-box code-box">
+                    <h3>Exemplo: Adicionar Data_Nascimento</h3>
+                    <pre><code>ALTER TABLE Autores
+ADD COLUMN Data_Nascimento DATE;</code></pre>
+                </div>
+
+                <div class="content-box">
+                    <h3>Explicação</h3>
+                    <ul>
+                        <li><strong>ALTER TABLE Autores</strong> - Modifica a tabela existente</li>
+                        <li><strong>ADD COLUMN Data_Nascimento DATE</strong> - Adiciona coluna do tipo DATE</li>
+                    </ul>
+                </div>
+
+                <div class="content-box aviso">
+                    <h3>⚠️ Impacto</h3>
+                    <ul>
+                        <li>✓ Novas linhas podem ter este campo</li>
+                        <li>⚠️ Linhas EXISTENTES receberão <strong>NULL</strong> nesta coluna</li>
+                        <li>ℹ️ Ordem das colunas pode mudar</li>
+                    </ul>
+                </div>
+
+                <div class="content-box highlight">
+                    <h3>💡 Lembre-se</h3>
+                    <p>Para linhas existentes, Data_Nascimento será NULL até serem atualizadas com um valor real.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: ALTER DROP COLUMN -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content">
+                <h2 class="slide-title">ALTER TABLE: Removendo Coluna</h2>
+
+                <div class="content-box code-box">
+                    <h3>Exemplo: Remover Nacionalidade</h3>
+                    <pre><code>ALTER TABLE Autores
+DROP COLUMN Nacionalidade;</code></pre>
+                </div>
+
+                <div class="content-box">
+                    <h3>Explicação</h3>
+                    <ul>
+                        <li><strong>ALTER TABLE Autores</strong> - Modifica a tabela existente</li>
+                        <li><strong>DROP COLUMN Nacionalidade</strong> - REMOVE coluna completamente</li>
+                    </ul>
+                </div>
+
+                <div class="content-box danger">
+                    <h3>🔴 IMPACTO - CUIDADO!</h3>
+                    <ul>
+                        <li>❌ TODOS os dados na coluna são PERDIDOS</li>
+                        <li>✓ Dados em outras colunas NÃO são afetados</li>
+                        <li>⚠️ A estrutura da tabela é redefinida</li>
+                    </ul>
+                </div>
+
+                <div class="content-box alert">
+                    <h3>⚠️ Aviso Crítico</h3>
+                    <p>Esta operação é <strong>IRREVERSÍVEL</strong>! Faça backup antes!</p>
+                    <p><strong>Alternativa:</strong> Se só quer desativar coluna temporariamente, use UPDATE para NULL</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: ALTER MODIFY COLUMN -->
+        <div class="slide" data-slide="12">
+            <div class="slide-content">
+                <h2 class="slide-title">ALTER TABLE: Modificando Coluna</h2>
+
+                <div class="content-box code-box">
+                    <h3>Exemplo: Expandir Tamanho de VARCHAR</h3>
+                    <pre><code>ALTER TABLE Autores
+MODIFY COLUMN Nome VARCHAR(200);</code></pre>
+                </div>
+
+                <div class="content-box">
+                    <h3>Explicação</h3>
+                    <ul>
+                        <li><strong>ALTER TABLE Autores</strong> - Modifica a tabela existente</li>
+                        <li><strong>MODIFY COLUMN Nome VARCHAR(200)</strong> - Muda de VARCHAR(100) para VARCHAR(200)</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>Casos de Uso</h3>
+                    <ul>
+                        <li>📈 Aumentar tamanho de VARCHAR (100 → 200)</li>
+                        <li>🔄 Mudar tipo de coluna (INT → BIGINT)</li>
+                        <li>🛡️ Adicionar/remover NOT NULL</li>
+                        <li>📌 Mudar DEFAULT de uma coluna</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>⚠️ Considerações</h3>
+                    <ul>
+                        <li>✓ Deve ser COMPATÍVEL com dados existentes</li>
+                        <li>✓ Não pode reduzir tamanho se dados ultrapassam novo limite</li>
+                        <li>⚠️ Pode afetar performance em tabelas grandes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: DROP TABLE -->
+        <div class="slide" data-slide="13">
+            <div class="slide-content">
+                <h2 class="slide-title">4. Comando DROP - Removendo Objetos</h2>
+
+                <div class="content-box">
+                    <h3>Propósito</h3>
+                    <p>O comando <strong>DROP</strong> <strong>REMOVE COMPLETAMENTE</strong> um objeto do banco de dados.</p>
+                </div>
+
+                <div class="content-box danger-high">
+                    <h3>🔴 CRÍTICO - Operação Irreversível!</h3>
+                    <p>DROP remove <strong>ESTRUTURA E DADOS</strong> - NÃO pode ser desfeito!</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Objetos que Podem Ser Removidos</h3>
+                    <ul>
+                        <li><strong>DROP TABLE NomeTabela</strong> - Remove a tabela inteira</li>
+                        <li><strong>DROP DATABASE NomeBD</strong> - Remove banco de dados inteiro</li>
+                        <li><strong>DROP INDEX NomeIndice</strong> - Remove índice</li>
+                    </ul>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-title">Diferença: DROP vs DELETE vs TRUNCATE</div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Operação</th>
+                                <th>Remove</th>
+                                <th>Reversível</th>
+                                <th>Velocidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>DROP</strong></td>
+                                <td>Estrutura + Dados</td>
+                                <td>❌ Muito difícil</td>
+                                <td>Lento</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DELETE</strong></td>
+                                <td>Apenas Dados</td>
+                                <td>✅ Com ROLLBACK</td>
+                                <td>Médio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TRUNCATE</strong></td>
+                                <td>Todos os Dados</td>
+                                <td>❌ Difícil</td>
+                                <td>Muito rápido</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: ALERTA DROP -->
+        <div class="slide" data-slide="14">
+            <div class="slide-content">
+                <h2 class="slide-title">⚠️ ALERTA DE SEGURANÇA: DROP é Irreversível</h2>
+
+                <div class="content-box danger-mega">
+                    <h3>🔴 CRÍTICO - Leia com Atenção!</h3>
+                    <p><strong>DROP remove ESTRUTURA E DADOS</strong><br>
+                    Não pode ser desfeito facilmente!</p>
+                </div>
+
+                <div class="content-box danger">
+                    <h3>⚠️ Impacto do DROP</h3>
+                    <ul>
+                        <li>❌ <strong>TABELA inteira</strong> é deletada</li>
+                        <li>❌ <strong>DADOS</strong> são perdidos completamente</li>
+                        <li>❌ <strong>ÍNDICES</strong> associados são removidos</li>
+                        <li>❌ <strong>CONSTRAINTS</strong> são removidas</li>
+                    </ul>
+                </div>
+
+                <div class="content-box danger">
+                    <h3>⚠️ Consequências Graves</h3>
+                    <ul>
+                        <li>❌ Perda TOTAL de dados</li>
+                        <li>❌ Possível downtime do sistema</li>
+                        <li>❌ Difícil recuperação (só com backups antigos)</li>
+                        <li>❌ Possível perda financeira</li>
+                    </ul>
+                </div>
+
+                <div class="content-box highlight">
+                    <h3>✅ Boas Práticas Essenciais</h3>
+                    <ul>
+                        <li>✅ Fazer <strong>BACKUP</strong> antes de qualquer DROP</li>
+                        <li>✅ Usar <strong>DROP IF EXISTS</strong> para evitar erros</li>
+                        <li>✅ Testar em <strong>DESENVOLVIMENTO</strong> primeiro</li>
+                        <li>✅ Confirmar com <strong>GERENCIADOR</strong> antes em PRODUÇÃO</li>
+                        <li>✅ Considerar <strong>RENAME</strong> antes de DELETE</li>
+                    </ul>
+                </div>
+
+                <div class="content-box code-box danger">
+                    <h3>❌ Exemplo Perigoso</h3>
+                    <pre><code>DROP TABLE Autores; -- ⚠️ Cuidado! Sem volta!</code></pre>
+
+                    <h3>✅ Forma Segura</h3>
+                    <pre><code>DROP TABLE IF EXISTS Autores; -- Só deleta se existe</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: TRUNCATE vs DELETE -->
+        <div class="slide" data-slide="15">
+            <div class="slide-content">
+                <h2 class="slide-title">5. TRUNCATE vs DELETE - Qual Usar?</h2>
+
+                <p>Entenda as diferenças entre estes dois comandos:</p>
+
+                <div class="table-container">
+                    <div class="table-title">Comparação Detalhada</div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>TRUNCATE</th>
+                                <th>DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>O que remove</strong></td>
+                                <td>TODOS os dados (sem WHERE)</td>
+                                <td>Dados específicos (com ou sem WHERE)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pode ter WHERE?</strong></td>
+                                <td>❌ Não - sempre remove tudo</td>
+                                <td>✅ Sim - DELETE FROM ... WHERE</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Velocidade</strong></td>
+                                <td>⚡ MUITO rápido</td>
+                                <td>🐢 Mais lento</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reseta AUTO_INCREMENT</strong></td>
+                                <td>✅ Reseta para 1</td>
+                                <td>❌ Mantém último valor</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ativa Triggers</strong></td>
+                                <td>❌ Não ativa</td>
+                                <td>✅ Ativa triggers DELETE</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reversível</strong></td>
+                                <td>❌ Difícil com ROLLBACK</td>
+                                <td>✅ Fácil com ROLLBACK</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-box code-box">
+                    <h3>Exemplos de Uso</h3>
+                    <h4>TRUNCATE - Remove TUDO rapidamente:</h4>
+                    <pre><code>TRUNCATE TABLE Autores;</code></pre>
+
+                    <h4>DELETE - Remove TUDO:</h4>
+                    <pre><code>DELETE FROM Autores;</code></pre>
+
+                    <h4>DELETE - Remove ESPECÍFICO:</h4>
+                    <pre><code>DELETE FROM Autores WHERE Nacionalidade = 'USA';</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 16: Resumo -->
+        <div class="slide" data-slide="16">
+            <div class="slide-content">
+                <h2 class="slide-title">Resumo dos Comandos DDL</h2>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">➕</div>
+                            <div class="concept-name">CREATE</div>
+                        </div>
+                        <p><strong>Cria</strong> novos objetos (tabelas, índices)</p>
+                        <p><strong>Usa quando:</strong> Precisa criar estrutura nova</p>
+                        <p><strong>Impacto:</strong> Cria estrutura</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">✏️</div>
+                            <div class="concept-name">ALTER</div>
+                        </div>
+                        <p><strong>Modifica</strong> estrutura existente</p>
+                        <p><strong>Usa quando:</strong> Precisa adicionar/remover colunas</p>
+                        <p><strong>Impacto:</strong> Modifica (mantém dados)</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🗑️</div>
+                            <div class="concept-name">DROP</div>
+                        </div>
+                        <p><strong>Remove</strong> objeto completamente</p>
+                        <p><strong>Usa quando:</strong> Precisa remover tabela não usada</p>
+                        <p><strong>Impacto:</strong> Remove estrutura E dados</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🧹</div>
+                            <div class="concept-name">TRUNCATE</div>
+                        </div>
+                        <p><strong>Limpa</strong> dados rapidamente</p>
+                        <p><strong>Usa quando:</strong> Precisa limpar tabela</p>
+                        <p><strong>Impacto:</strong> Remove dados (mantém estrutura)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 17: Atividade 6 -->
+        <div class="slide" data-slide="17">
+            <div class="slide-content">
+                <h2 class="slide-title">Atividade 6 (BD I) - Escrita de Comandos DDL</h2>
+
+                <p><strong>Instrução:</strong> Escreva os comandos SQL DDL necessários para as tarefas abaixo:</p>
+
+                <div class="content-box task">
+                    <h3>📋 Tarefa 1: Criar Tabela</h3>
+                    <p>Crie uma tabela chamada <strong>Autores</strong> com três colunas:</p>
+                    <ul>
+                        <li><strong>ID_Autor</strong> (inteiro, Chave Primária)</li>
+                        <li><strong>Nome</strong> (texto, obrigatório)</li>
+                        <li><strong>Nacionalidade</strong> (texto, opcional)</li>
+                    </ul>
+                </div>
+
+                <div class="content-box task">
+                    <h3>📋 Tarefa 2: Adicionar Coluna</h3>
+                    <p>Adicione uma nova coluna chamada <strong>Data_Nascimento</strong> (tipo Data) à tabela Autores.</p>
+                </div>
+
+                <div class="content-box task">
+                    <h3>📋 Tarefa 3: Remover Coluna</h3>
+                    <p>Remova completamente a coluna <strong>Nacionalidade</strong> da tabela Autores.</p>
+                </div>
+
+                <div class="content-box task danger">
+                    <h3>📋 Tarefa 4: Apagar Tabela</h3>
+                    <p>Escreva o comando para apagar completamente a tabela Autores.</p>
+                    <p><strong>⚠️ (Apenas para conhecimento - não execute em produção!)</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 18: Solução -->
+        <div class="slide" data-slide="18">
+            <div class="slide-content">
+                <h2 class="slide-title">Solução da Atividade 6</h2>
+
+                <p>Aqui estão os comandos SQL corretos:</p>
+
+                <div class="content-box code-box solution">
+                    <h3>✅ Tarefa 1: Criar Tabela Autores</h3>
+                    <pre><code>CREATE TABLE Autores (
+  ID_Autor INT PRIMARY KEY AUTO_INCREMENT,
+  Nome VARCHAR(100) NOT NULL,
+  Nacionalidade VARCHAR(50)
+);</code></pre>
+                    <p><strong>Explicação:</strong> Cria tabela com ID único auto-incrementado, nome obrigatório, nacionalidade opcional.</p>
+                </div>
+
+                <div class="content-box code-box solution">
+                    <h3>✅ Tarefa 2: Adicionar Data_Nascimento</h3>
+                    <pre><code>ALTER TABLE Autores
+ADD COLUMN Data_Nascimento DATE;</code></pre>
+                    <p><strong>Explicação:</strong> Adiciona coluna de data. Linhas existentes terão NULL para este campo.</p>
+                </div>
+
+                <div class="content-box code-box solution">
+                    <h3>✅ Tarefa 3: Remover Nacionalidade</h3>
+                    <pre><code>ALTER TABLE Autores
+DROP COLUMN Nacionalidade;</code></pre>
+                    <p><strong>Explicação:</strong> Remove coluna completamente. ⚠️ Todos os dados nela são PERDIDOS.</p>
+                </div>
+
+                <div class="content-box code-box solution danger">
+                    <h3>✅ Tarefa 4: Apagar Tabela</h3>
+                    <pre><code>DROP TABLE Autores;</code></pre>
+                    <p><strong>Explicação:</strong> Remove tabela inteira com estrutura e dados. ⚠️ IRREVERSÍVEL!</p>
+                </div>
+
+                <div class="content-box highlight">
+                    <h3>💡 Resumo de Conceitos</h3>
+                    <ul>
+                        <li>✓ <strong>PRIMARY KEY</strong> garante ID único</li>
+                        <li>✓ <strong>NOT NULL</strong> força dados obrigatórios</li>
+                        <li>✓ <strong>ALTER</strong> permite modificar sem perder outros dados</li>
+                        <li>✓ <strong>DROP</strong> remove tudo - use com cuidado!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 19: Ferramentas -->
+        <div class="slide" data-slide="19">
+            <div class="slide-content">
+                <h2 class="slide-title">Ferramentas Práticas para DDL</h2>
+
+                <div class="content-box">
+                    <h3>🖥️ SGBDs (Servidores de Banco de Dados)</h3>
+                    <ul>
+                        <li><strong>MySQL</strong> - Popular, fácil aprendizado, comunidade grande</li>
+                        <li><strong>PostgreSQL</strong> - Robusto, seguro, features avançadas</li>
+                        <li><strong>SQLite</strong> - Lightweight, sem servidor, perfeito para desenvolvimento</li>
+                        <li><strong>SQL Server</strong> - Profissional, empresa (Microsoft)</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>🎨 Ferramentas GUI (Interface Gráfica)</h3>
+                    <ul>
+                        <li><strong>phpMyAdmin</strong> - Web-based para MySQL</li>
+                        <li><strong>DBeaver</strong> - Desktop, suporta múltiplos SGBDs</li>
+                        <li><strong>HeidiSQL</strong> - Leve, para MySQL/MariaDB</li>
+                        <li><strong>MySQL Workbench</strong> - Oficial, completo</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>☁️ Ferramentas Online (sem instalar)</h3>
+                    <ul>
+                        <li><strong>SQLFiddle</strong> (sqlfiddle.com) - Executar SQL online</li>
+                        <li><strong>DB Fiddle</strong> (dbfiddle.uk) - Moderno, múltiplos SGBDs</li>
+                        <li><strong>OneCompiler</strong> - SQL online com histórico</li>
+                    </ul>
+                </div>
+
+                <div class="content-box highlight">
+                    <h3>✅ Recomendação para Começar</h3>
+                    <p>Instale <strong>MySQL + DBeaver</strong> OU use <strong>DB Fiddle online</strong> para praticar sem instalar nada!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 20: Boas Práticas -->
+        <div class="slide" data-slide="20">
+            <div class="slide-content">
+                <h2 class="slide-title">Boas Práticas em DDL</h2>
+
+                <div class="content-box practice">
+                    <h3>1. Nomes Significativos</h3>
+                    <p><strong>❌ Ruim:</strong> <code>CREATE TABLE t1 (c1 INT, c2 VARCHAR(100))</code></p>
+                    <p><strong>✅ Bom:</strong> <code>CREATE TABLE Clientes (ID_Cliente INT, Nome VARCHAR(100))</code></p>
+                </div>
+
+                <div class="content-box practice">
+                    <h3>2. Tipos Apropriados</h3>
+                    <p><strong>❌ Ruim:</strong> <code>Email VARCHAR(1000)</code></p>
+                    <p><strong>✅ Bom:</strong> <code>Email VARCHAR(100)</code></p>
+                </div>
+
+                <div class="content-box practice">
+                    <h3>3. Documentação</h3>
+                    <p>Use <strong>COMMENT</strong> para documentar tabelas e colunas.</p>
+                </div>
+
+                <div class="content-box practice">
+                    <h3>4. Versionar Alterações</h3>
+                    <p>Mantenha histórico de mudanças com <strong>Git</strong> para scripts DDL.</p>
+                </div>
+
+                <div class="content-box practice">
+                    <h3>5. Testar em Desenvolvimento</h3>
+                    <p>Sempre teste <strong>ALTER/DROP em BD desenvolvimento</strong> antes de produção.</p>
+                </div>
+
+                <div class="content-box practice">
+                    <h3>6. Backup Antes de DROP</h3>
+                    <p>Use <strong>mysqldump</strong> ou backup específico do SGBD.</p>
+                </div>
+
+                <div class="content-box practice">
+                    <h3>7. Usar IF EXISTS</h3>
+                    <p><strong>✅ Seguro:</strong> <code>CREATE TABLE IF NOT EXISTS Autores...</code></p>
+                    <p><strong>✅ Seguro:</strong> <code>DROP TABLE IF EXISTS Autores;</code></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 21: Conceitos Avançados -->
+        <div class="slide" data-slide="21">
+            <div class="slide-content">
+                <h2 class="slide-title">Conceitos Avançados (Próxima Aula)</h2>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🔗</div>
+                            <div class="concept-name">Foreign Keys</div>
+                        </div>
+                        <p><strong>Relacionar tabelas</strong> entre si.</p>
+                        <p>Ex: <code>FOREIGN KEY (...)</code></p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🔍</div>
+                            <div class="concept-name">Índices</div>
+                        </div>
+                        <p><strong>Otimizar velocidade</strong> de buscas.</p>
+                        <p>Ex: <code>CREATE INDEX idx_Nome</code></p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">👁️</div>
+                            <div class="concept-name">Views</div>
+                        </div>
+                        <p><strong>Tabelas virtuais</strong> (consultas salvas).</p>
+                        <p>Ex: <code>CREATE VIEW AutoresEUA</code></p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">⚡</div>
+                            <div class="concept-name">Triggers</div>
+                        </div>
+                        <p><strong>Ações automáticas</strong> quando dados mudam.</p>
+                        <p>Ex: <code>CREATE TRIGGER atualizar</code></p>
+                    </div>
+                </div>
+
+                <div class="content-box highlight">
+                    <h3>🚀 Próximo Módulo</h3>
+                    <p><strong>Módulo 2:</strong> DML (INSERT, UPDATE, DELETE) - Como manipular dados!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 22: Conclusão -->
+        <div class="slide" data-slide="22">
+            <div class="slide-content conclusion-slide">
+                <h1 class="conclusion-title">🎉 Parabéns!</h1>
+                <h2 class="conclusion-subtitle">Você Completou o Módulo DDL</h2>
+
+                <div class="conclusion-box">
+                    <p class="conclusion-message">Você domina os <strong>Fundamentos de DDL</strong>!</p>
+
+                    <div class="achievement-list">
+                        <p>✅ Entendeu o papel fundamental do DDL</p>
+                        <p>✅ Criou tabelas com CREATE TABLE</p>
+                        <p>✅ Modificou estruturas com ALTER TABLE</p>
+                        <p>✅ Compreendeu DROP e TRUNCATE</p>
+                        <p>✅ Resolveu Atividade 6 com sucesso</p>
+                        <p>✅ Conhece boas práticas em DDL</p>
+                    </div>
+
+                    <p class="next-action">Você está pronto para o <strong>MÓDULO 2 - Comandos DML</strong> (INSERT, UPDATE, DELETE)!</p>
+                    <p class="encouragement">Parabéns por investir no seu aprendizado de Banco de Dados! 🚀</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegação -->
+    <div class="navigation">
+        <button class="btn nav-btn prev" id="prevBtn">← Anterior</button>
+        <span class="slide-indicator" id="slideIndicator">Slide 1 de 22</span>
+        <button class="btn nav-btn next" id="nextBtn">Próximo →</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
