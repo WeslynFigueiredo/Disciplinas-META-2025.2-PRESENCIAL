@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÓDULO 1 - Fundamentos de Redes de Computadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header com Logo e Progresso -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="module-info">
+                    <img src="logo.png" alt="Logo da META" id="metaLogoImage">
+                </div>
+            </div>
+            <div class="progress-section">
+                <div class="progress-text" id="progressText">Slide 1 de 18</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar" style="width: 5.56%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- SLIDE 1: Capa -->
+        <div class="slide" data-slide="1">
+            <div class="slide-content title-slide">
+                <h1 class="main-title">MÓDULO 1</h1>
+                <h2 class="main-subtitle">Fundamentos Essenciais de Redes de Computadores</h2>
+                <p class="subtitle">Material de Estudo - Tópicos Fundamentais</p>
+                <div class="icon-large">🌐</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Objetivos -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-title">Objetivos de Aprendizagem</h2>
+                <p>Ao final deste módulo, você será capaz de:</p>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-icon">🎯</div>
+                        <div class="concept-name">Conceitos Fundamentais</div>
+                        <p>Compreender o que é uma rede de computadores</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">🏗️</div>
+                        <div class="concept-name">Arquiteturas</div>
+                        <p>Diferenciar P2P e Cliente-Servidor</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">🔀</div>
+                        <div class="concept-name">Hardware</div>
+                        <p>Identificar o papel do Switch</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">🏷️</div>
+                        <div class="concept-name">Endereçamento</div>
+                        <p>Entender IP e MAC</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">⚙️</div>
+                        <div class="concept-name">DHCP</div>
+                        <p>Compreender configuração automática</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon">🔌</div>
+                        <div class="concept-name">Cabeamento</div>
+                        <p>Dominar UTP e padrões 568A/568B</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Conceitos Fundamentais -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2 class="slide-title">1. Conceitos Fundamentais de Redes</h2>
+
+                <div class="content-box">
+                    <h3>Definição</h3>
+                    <p>Uma <strong>rede de computadores</strong> é um conjunto de dispositivos (computadores, impressoras, smartphones, etc.) conectados entre si para <strong>compartilhar informações e recursos</strong>.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Principais Objetivos</h3>
+                    <ul>
+                        <li>✅ Comunicação eficiente entre dispositivos</li>
+                        <li>✅ Compartilhamento de recursos (internet, impressoras, arquivos)</li>
+                        <li>✅ Centralização de dados</li>
+                        <li>✅ Otimização de custos</li>
+                    </ul>
+                </div>
+
+                <div class="content-box analogia">
+                    <h3>💡 Analogia</h3>
+                    <p>Uma rede é como um <strong>grupo de pessoas comunicando-se por telefone</strong> - quanto mais conectadas, melhor a comunicação!</p>
+                </div>
+
+                <div class="content-box curiosidade">
+                    <h3>📚 Curiosidade Histórica: A ARPANET</h3>
+                    <p><strong>Em 1969</strong>, o Departamento de Defesa dos EUA (DARPA) criou a <strong>ARPANET</strong>, a primeira rede de computadores. Conectava apenas 4 universidades e foi o precursor direto da <strong>internet</strong> que conhecemos hoje!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: P2P -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title">2.1. Arquitetura Peer-to-Peer (P2P)</h2>
+
+                <div class="content-box">
+                    <h3>Definição</h3>
+                    <p>Todos os dispositivos são <strong>iguais</strong>; não há servidor central. Cada computador pode ser <strong>cliente</strong> ou <strong>servidor</strong> simultaneamente.</p>
+                </div>
+
+                <div class="two-columns">
+                    <div class="content-box vantagens">
+                        <h3>✅ Vantagens</h3>
+                        <ul>
+                            <li>Sem ponto único de falha</li>
+                            <li>Mais simples de configurar</li>
+                            <li>Ideal para pequenas redes</li>
+                        </ul>
+                    </div>
+                    <div class="content-box desvantagens">
+                        <h3>❌ Desvantagens</h3>
+                        <ul>
+                            <li>Difícil gerenciar muitos dispositivos</li>
+                            <li>Segurança mais fraca</li>
+                            <li>Performance varia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Casos de Uso</h3>
+                    <ul>
+                        <li>🏠 Redes domésticas simples</li>
+                        <li>📥 Compartilhamento de arquivos (torrents)</li>
+                        <li>🎮 Jogos multiplayer locais</li>
+                        <li>💾 Backup distribuído</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Cliente-Servidor -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2 class="slide-title">2.2. Arquitetura Cliente-Servidor</h2>
+
+                <div class="content-box">
+                    <h3>Definição</h3>
+                    <p>Há um <strong>servidor central</strong> poderoso que fornece serviços (arquivos, email, web) a muitos <strong>clientes</strong>.</p>
+                </div>
+
+                <div class="content-box analogia">
+                    <h3>🍽️ Analogia do Restaurante</h3>
+                    <p><strong>Servidor</strong> = Cozinha (prepara pedidos)<br>
+                    <strong>Clientes</strong> = Mesas (fazem pedidos)<br>
+                    <strong>Gerente (Admin)</strong> = Cuida que tudo funcione perfeitamente!</p>
+                </div>
+
+                <div class="two-columns">
+                    <div class="content-box casos">
+                        <h3>Casos de Uso</h3>
+                        <ul>
+                            <li>🌐 A internet (servidores web)</li>
+                            <li>🏢 Redes corporativas</li>
+                            <li>🗄️ Bancos de dados centralizados</li>
+                            <li>🎬 Streaming de vídeo</li>
+                        </ul>
+                    </div>
+                    <div class="content-box vantagens">
+                        <h3>✅ Vantagens</h3>
+                        <ul>
+                            <li>Gerenciamento centralizado</li>
+                            <li>Segurança aprimorada</li>
+                            <li>Escalabilidade</li>
+                            <li>Backup único</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Switch -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2 class="slide-title">3. Hardware de Conexão: O Switch</h2>
+
+                <div class="content-box">
+                    <h3>Definição</h3>
+                    <p>Um <strong>Switch</strong> é um dispositivo inteligente que conecta vários computadores, <strong>aprendendo o endereço MAC</strong> de cada dispositivo e encaminhando dados <strong>apenas para a porta correta</strong>.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Função Principal</h3>
+                    <p>Recebe dados de um computador e os envia <strong>APENAS para o computador de destino</strong> (baseado no endereço MAC)</p>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-title">Switch vs Hub vs Router</div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Dispositivo</th>
+                                <th>Eficiência</th>
+                                <th>Aprendizado</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Switch</strong></td>
+                                <td>Alto - encaminha apenas para porta correta</td>
+                                <td>Aprende endereços MAC</td>
+                                <td>✅ Moderno</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hub</strong></td>
+                                <td>Baixo - envia para TODAS as portas</td>
+                                <td>Não aprende</td>
+                                <td>❌ Obsoleto</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Router</strong></td>
+                                <td>Alto - encaminha entre redes diferentes</td>
+                                <td>Aprende endereços IP</td>
+                                <td>✅ Conecta redes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Compartilhamento de Pastas -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2 class="slide-title">3.2. Compartilhamento de Pastas</h2>
+
+                <div class="content-box">
+                    <h3>Definição</h3>
+                    <p><strong>Compartilhamento</strong> é uma função do sistema operacional que permite que um computador atue como um <strong>mini-servidor de arquivos</strong> para outros computadores conectados na mesma rede.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Como Funciona</h3>
+                    <ol>
+                        <li>Você ativa o compartilhamento em uma pasta no seu PC</li>
+                        <li>Outro usuário na rede vê seu PC como um "servidor"</li>
+                        <li>Ele acessa a pasta compartilhada como se fosse um HD externo</li>
+                        <li>Todos estão conectados através do Switch</li>
+                    </ol>
+                </div>
+
+                <div class="content-box exemplo">
+                    <h3>📋 Exemplo Prático</h3>
+                    <p>Você compartilha uma pasta <strong>"Projetos"</strong> e seus colegas acessam os arquivos via rede - como se fosse um servidor!</p>
+                </div>
+
+                <div class="content-box beneficio">
+                    <h3>💡 Benefício Principal</h3>
+                    <p><strong>Não precisa de um servidor caro</strong> - qualquer PC pode compartilhar arquivos com outros!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: Endereçamento IP -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2 class="slide-title">4. Endereçamento IP (Internet Protocol)</h2>
+
+                <div class="content-box">
+                    <h3>Definição</h3>
+                    <p>Um <strong>Endereço IP</strong> é a <strong>identidade lógica e numérica</strong> de um dispositivo na rede.<br>
+                    <strong>Exemplo:</strong> <code>192.168.1.1</code></p>
+                </div>
+
+                <div class="two-columns">
+                    <div class="content-box mac-box">
+                        <h3>Endereço MAC (Físico)</h3>
+                        <ul>
+                            <li><strong>Formato:</strong> 48 bits (00:1A:2B:3C:4D:5E)</li>
+                            <li><strong>Característico:</strong> Fixo no hardware</li>
+                            <li><strong>Escopo:</strong> Rede local apenas</li>
+                            <li><strong>Função:</strong> Identifica na rede local</li>
+                        </ul>
+                    </div>
+                    <div class="content-box ip-box">
+                        <h3>Endereço IP (Lógico)</h3>
+                        <ul>
+                            <li><strong>Formato:</strong> 32 bits (192.168.1.1)</li>
+                            <li><strong>Característico:</strong> Configurável/dinâmico</li>
+                            <li><strong>Escopo:</strong> Funciona em redes diferentes</li>
+                            <li><strong>Função:</strong> Identifica na internet</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box analogia">
+                    <h3>💡 Analogia</h3>
+                    <p><strong>MAC</strong> é como seu <strong>CPF</strong> (fixo, te identifica sempre)<br>
+                    <strong>IP</strong> é como seu <strong>endereço de casa</strong> (pode mudar se você se muda)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: DHCP -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2 class="slide-title">5. Protocolo DHCP</h2>
+
+                <div class="content-box">
+                    <h3>Definição</h3>
+                    <p><strong>DHCP</strong> (Dynamic Host Configuration Protocol) é um protocolo que <strong>atribui endereços IP automaticamente</strong> aos dispositivos na rede.</p>
+                </div>
+
+                <div class="content-box beneficios">
+                    <h3>✅ Benefícios</h3>
+                    <ul>
+                        <li>Elimina necessidade de configurar IPs manualmente</li>
+                        <li>Evita conflitos de endereço (dois PCs com mesmo IP)</li>
+                        <li>Gerenciamento automático e eficiente</li>
+                        <li>Ideal para redes com muitos dispositivos</li>
+                    </ul>
+                </div>
+
+                <div class="content-box processo">
+                    <h3>⚙️ Processo Passo-a-Passo</h3>
+                    <ol>
+                        <li><strong>Cliente solicita:</strong> "Preciso de um IP!"</li>
+                        <li><strong>Servidor DHCP responde:</strong> "Você é 192.168.1.100, válido por 24 horas"</li>
+                        <li><strong>Cliente usa:</strong> Esse IP para se comunicar</li>
+                        <li><strong>Renovação:</strong> Quando expira, cliente solicita um novo</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Cabeamento - UTP e RJ45 -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2 class="slide-title">6. Cabeamento de Redes - Cabo UTP e RJ45</h2>
+
+                <div class="content-box">
+                    <h3>Cabo UTP (Unshielded Twisted Pair)</h3>
+                    <p>O tipo de cabo de rede <strong>mais comum</strong>. Contém <strong>4 pares de fios trançados</strong> para reduzir interferência eletromagnética.</p>
+                    <p><strong>Por que trançado?</strong> Os fios trançados cancelam interferências externas - engenharia brilhante!</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Conector RJ45</h3>
+                    <p>O <strong>conector que vai na ponta</strong> do cabo. Se encaixa na porta do Switch ou computador com um <strong>"click"</strong>.</p>
+                    <ul>
+                        <li>Aparência: Plástico transparente com 8 pequenos contatos de metal</li>
+                        <li>Função: Transferir dados através dos 8 fios</li>
+                        <li>Compatibilidade: Universal em redes modernas</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>Composição do Cabo</h3>
+                    <p>Um cabo UTP contém <strong>8 fios em 4 cores diferentes</strong> (formando 4 pares):</p>
+                    <p><code>Par 1: Branco-Verde + Verde</code><br>
+                    <code>Par 2: Branco-Laranja + Laranja</code><br>
+                    <code>Par 3: Branco-Azul + Azul</code><br>
+                    <code>Par 4: Branco-Marrom + Marrom</code></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Padrões 568A e 568B -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content">
+                <h2 class="slide-title">6.2. Padrões de Montagem 568A e 568B</h2>
+
+                <div class="content-box">
+                    <h3>Explicação Geral</h3>
+                    <p>Estes são os <strong>esquemas de cores para organizar os 8 fios</strong> dentro do conector RJ45.</p>
+                </div>
+
+                <div class="two-columns">
+                    <div class="content-box padrao-568a">
+                        <h3>Padrão 568A</h3>
+                        <p><strong>Sequência de cores:</strong><br>
+                        Branco-Verde, Verde, Branco-Laranja, Azul, Branco-Azul, Laranja, Branco-Marrom, Marrom</p>
+                        <p><strong>Usado em:</strong> Estruturas prediais (menos comum em redes residenciais)</p>
+                    </div>
+                    <div class="content-box padrao-568b">
+                        <h3>Padrão 568B</h3>
+                        <p><strong>Sequência de cores:</strong><br>
+                        Branco-Laranja, Laranja, Branco-Verde, Azul, Branco-Azul, Verde, Branco-Marrom, Marrom</p>
+                        <p><strong>Usado em:</strong> Redes comerciais e residenciais (mais comum nos EUA)</p>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>💡 Dica de Memorização</h3>
+                    <p><strong>568B</strong> = <strong>"Branco-Laranja, Laranja..."</strong> (lembre da sequência!)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: Tipos de Cabos -->
+        <div class="slide" data-slide="12">
+            <div class="slide-content">
+                <h2 class="slide-title">6.3. Tipos de Cabos - Direto e Crossover</h2>
+
+                <div class="content-box">
+                    <h3>📍 Cabo Direto (Straight-Through)</h3>
+                    <p><strong>Padrão:</strong> 568B nos dois lados OU 568A nos dois lados (MESMO padrão em ambas as pontas)</p>
+                    <ul>
+                        <li><strong>Usado para:</strong> Conectar PC ao Switch (uso mais comum!)</li>
+                        <li><strong>Quando usar:</strong> Dispositivos DIFERENTES (PC→Switch, Impressora→Switch)</li>
+                        <li><strong>Conexão visual:</strong> PC ←→ Switch ←→ Router</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>📍 Cabo Crossover</h3>
+                    <p><strong>Padrão:</strong> 568A em uma ponta e 568B na outra (PADRÕES DIFERENTES)</p>
+                    <ul>
+                        <li><strong>Usado para:</strong> Conectar dispositivos IGUAIS</li>
+                        <li><strong>Exemplos:</strong>
+                            <ul>
+                                <li>PC a PC (diretamente, sem Switch)</li>
+                                <li>Switch a Switch</li>
+                                <li>Router a Router</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nota:</strong> Menos usado hoje (dispositivos modernos auto-detectam)</li>
+                    </ul>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-title">Resumo: Quando Usar Cada Tipo</div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Cabo</th>
+                                <th>Padrão</th>
+                                <th>Conexão</th>
+                                <th>Uso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Direto</td>
+                                <td>Mesmo padrão nos 2 lados</td>
+                                <td>PC ↔ Switch</td>
+                                <td>Mais comum</td>
+                            </tr>
+                            <tr>
+                                <td>Crossover</td>
+                                <td>Padrões diferentes</td>
+                                <td>PC ↔ PC</td>
+                                <td>Raro hoje em dia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Resumo -->
+        <div class="slide" data-slide="13">
+            <div class="slide-content">
+                <h2 class="slide-title">Resumo dos Conceitos Principais</h2>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🌐</div>
+                            <div class="concept-name">Rede</div>
+                        </div>
+                        <p>Dispositivos conectados para compartilhar recursos e comunicação</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🏗️</div>
+                            <div class="concept-name">Arquiteturas</div>
+                        </div>
+                        <p>P2P (todos iguais) vs Cliente-Servidor (servidor central)</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🔀</div>
+                            <div class="concept-name">Switch</div>
+                        </div>
+                        <p>Dispositivo inteligente que encaminha dados para porta correta</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🏷️</div>
+                            <div class="concept-name">Endereçamento</div>
+                        </div>
+                        <p>MAC (fixo) e IP (dinâmico) identificam dispositivos</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">⚙️</div>
+                            <div class="concept-name">DHCP</div>
+                        </div>
+                        <p>Protocolo que atribui IPs automaticamente</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="concept-icon">🔌</div>
+                            <div class="concept-name">Cabeamento</div>
+                        </div>
+                        <p>UTP com padrões 568A/568B para conectar redes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: Jogo 1 -->
+        <div class="slide" data-slide="14">
+            <div class="slide-content">
+                <h2 class="slide-title">Jogo Interativo 1 - Identificar Componentes</h2>
+
+                <div class="game-container">
+                    <div class="game-progress">
+                        <span>Questão <span id="game1-current">1</span> de 4</span>
+                        <span>Pontos: <span id="game1-score">0</span>/4</span>
+                    </div>
+
+                    <div class="scenario-box" id="game1-scenario"></div>
+
+                    <div class="options-container" id="game1-options"></div>
+
+                    <div class="feedback-box" id="game1-feedback" style="display: none;"></div>
+
+                    <button class="btn nav-btn next" id="game1-next-btn" style="display: none; width: 100%;">
+                        Próxima Questão →
+                    </button>
+
+                    <div id="game1-final" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: Jogo 2 -->
+        <div class="slide" data-slide="15">
+            <div class="slide-content">
+                <h2 class="slide-title">Jogo Interativo 2 - Cenários Práticos</h2>
+
+                <div class="game-container">
+                    <div class="game-progress">
+                        <span>Questão <span id="game2-current">1</span> de 3</span>
+                        <span>Pontos: <span id="game2-score">0</span>/3</span>
+                    </div>
+
+                    <div class="scenario-box" id="game2-scenario"></div>
+
+                    <div class="options-container" id="game2-options"></div>
+
+                    <div class="feedback-box" id="game2-feedback" style="display: none;"></div>
+
+                    <button class="btn nav-btn next" id="game2-next-btn" style="display: none; width: 100%;">
+                        Próxima Questão →
+                    </button>
+
+                    <div id="game2-final" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 16: Atividade de Reflexão -->
+        <div class="slide" data-slide="16">
+            <div class="slide-content">
+                <h2 class="slide-title">Atividade de Reflexão Prática</h2>
+
+                <p>Reflita sobre o que aprendeu e responda as questões abaixo:</p>
+
+                <form id="activityForm" class="activity-form">
+                    <div class="form-group">
+                        <label class="form-label">1. Descreva uma situação do dia-a-dia que você acredita ser uma rede de computadores</label>
+                        <textarea class="form-textarea" placeholder="Por exemplo: comunicação entre smartphones, impressoras na escola, etc..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">2. Como você usaria os conceitos aprendidos para diagnosticar um problema de rede?</label>
+                        <textarea class="form-textarea" placeholder="Pense em: verificar Switch, endereços IP, DHCP, etc..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">3. Cite um exemplo onde você precisaria de um cabo Crossover</label>
+                        <textarea class="form-textarea" placeholder="Lembre-se: Crossover é para conectar dispositivos iguais..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Enviar Respostas</button>
+                </form>
+
+                <div id="submissionFeedback" style="display: none; margin-top: 1.5rem;">
+                    <div class="feedback-box" style="background: rgba(76, 222, 128, 0.2); border-left: 4px solid #4cde80;">
+                        <p><strong>✅ Respostas Registradas!</strong></p>
+                        <p>Suas reflexões foram salvas. Continue estudando e consolidando seu aprendizado!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 17: Referências -->
+        <div class="slide" data-slide="17">
+            <div class="slide-content">
+                <h2 class="slide-title">Referências e Próximos Passos</h2>
+
+                <div class="content-box">
+                    <h3>📚 Para Estudar Mais:</h3>
+                    <ul>
+                        <li><strong>Kurose, J. & Ross, K.</strong> - Computer Networking (livro clássico)</li>
+                        <li><strong>Cisco Networking Academy</strong> - Cursos gratuitos online</li>
+                        <li><strong>Documentação RFC 791</strong> - Internet Protocol (IP)</li>
+                        <li><strong>Documentação RFC 2131</strong> - Dynamic Host Configuration Protocol (DHCP)</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>🚀 Próximos Tópicos para Aprender:</h3>
+                    <ul>
+                        <li>Modelo OSI e Camadas de Rede</li>
+                        <li>Protocolo TCP/IP</li>
+                        <li>DNS (Sistema de Nomes)</li>
+                        <li>Firewalls e Segurança em Redes</li>
+                        <li>Configuração Prática de Redes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 18: Conclusão -->
+        <div class="slide" data-slide="18">
+            <div class="slide-content conclusion-slide">
+                <h1 class="conclusion-title">🎉 Parabéns!</h1>
+                <h2 class="conclusion-subtitle">Você Completou o Módulo 1</h2>
+
+                <div class="conclusion-box">
+                    <p class="conclusion-message">Você domina os <strong>Fundamentos de Redes</strong>!</p>
+
+                    <div class="achievement-list">
+                        <p>✅ Compreendeu o conceito de rede e seus objetivos</p>
+                        <p>✅ Diferenciou arquiteturas P2P e Cliente-Servidor</p>
+                        <p>✅ Entendeu o papel do Switch e endereçamento IP/MAC</p>
+                        <p>✅ Aprendeu sobre DHCP e protocolos de rede</p>
+                        <p>✅ Dominou cabeamento UTP e padrões 568A/568B</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegação -->
+    <div class="navigation">
+        <button class="btn nav-btn prev" id="prevBtn">← Anterior</button>
+        <span class="slide-indicator" id="slideIndicator">Slide 1 de 18</span>
+        <button class="btn nav-btn next" id="nextBtn">Próximo →</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
