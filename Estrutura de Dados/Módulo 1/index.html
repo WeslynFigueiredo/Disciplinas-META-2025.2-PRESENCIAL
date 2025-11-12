@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÓDULO 1 - Fundamentos de C++ e Fila (FIFO)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="module-info">
+                    <img src="logo.png" alt="Logo da META" id="metaLogoImage">
+
+                </div>
+            </div>
+            <div class="progress-section">
+                <div class="progress-text" id="progressText">Slide 1 de 20</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar" style="width: 5%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- SLIDE 1: Capa -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content title-slide">
+                <h1 class="main-title">MÓDULO 1</h1>
+                <h2 class="main-subtitle">Fundamentos de C++ e Fila (FIFO)</h2>
+                <p class="subtitle">Material de Estudo - Tópicos Fundamentais</p>
+                <div class="icon-large">💻</div>
+                <p class="intro-text">Aprenda os fundamentos da linguagem C++ e a estrutura de dados Fila de forma autodidata</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Objetivos -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-title">Objetivos de Aprendizagem</h2>
+                <div class="objectives-grid">
+                    <div class="objective-card">
+                        <div class="objective-icon">🎯</div>
+                        <h3>Fundamentos C++</h3>
+                        <p>Dominar tipos de dados, operadores e estruturas condicionais</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">📦</div>
+                        <h3>Struct</h3>
+                        <p>Criar e manipular estruturas compostas de dados</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">🔄</div>
+                        <h3>Fila FIFO</h3>
+                        <p>Compreender o conceito First-In First-Out</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">⚙️</div>
+                        <h3>Implementação</h3>
+                        <p>Implementar operações Enqueue e Dequeue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Tipos de Dados -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2 class="slide-title">1. Variáveis e Tipos de Dados em C++</h2>
+
+                <div class="content-section">
+                    <h3>Tipos Básicos</h3>
+                    <div class="types-grid">
+                        <div class="type-card">
+                            <h4>int</h4>
+                            <p class="type-desc">Números inteiros (sem decimal)</p>
+                            <code>int idade = 25;</code>
+                            <p class="type-info">Tamanho: 4 bytes</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>float</h4>
+                            <p class="type-desc">Números decimais (precisão simples)</p>
+                            <code>float altura = 1.75;</code>
+                            <p class="type-info">Tamanho: 4 bytes</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>char</h4>
+                            <p class="type-desc">Um único caractere</p>
+                            <code>char letra = 'A';</code>
+                            <p class="type-info">Tamanho: 1 byte</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>bool</h4>
+                            <p class="type-desc">Verdadeiro ou Falso</p>
+                            <code>bool ativo = true;</code>
+                            <p class="type-info">Valores: true/false</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Exemplo Completo:</h3>
+                    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int idade = 25;
+    float altura = 1.75;
+    char inicial = 'J';
+    bool estudante = true;
+
+    cout &lt;&lt; "Idade: " &lt;&lt; idade &lt;&lt; endl;
+    cout &lt;&lt; "Altura: " &lt;&lt; altura &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Constantes -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title">1.2 Constantes em C++</h2>
+
+                <div class="content-section">
+                    <h3>O que são Constantes?</h3>
+                    <p>Constantes são valores que <strong>NÃO PODEM ser modificados</strong> após a inicialização.</p>
+
+                    <div class="highlight-box">
+                        <h4>Palavra-chave: const</h4>
+                        <p><strong>Sintaxe:</strong> <code>const TipoDado NOME = valor;</code></p>
+                    </div>
+
+                    <h3>Por que usar constantes?</h3>
+                    <ul>
+                        <li>🛡️ <strong>Segurança:</strong> Evita modificações acidentais</li>
+                        <li>📖 <strong>Clareza:</strong> Código mais legível</li>
+                        <li>⚡ <strong>Performance:</strong> Compilador pode otimizar</li>
+                    </ul>
+                </div>
+
+                <div class="code-example">
+                    <h3>Exemplos:</h3>
+                    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    const float PI = 3.14159;
+    const int MAX_ALUNOS = 50;
+
+    float raio = 5.0;
+    float area = PI * raio * raio;
+
+    cout &lt;&lt; "Área: " &lt;&lt; area &lt;&lt; endl;
+
+    // PI = 3.14; // ❌ ERRO! Não pode modificar
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Operadores Aritméticos -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2 class="slide-title">1.3 Operadores Aritméticos</h2>
+
+                <div class="operators-grid">
+                    <div class="operator-card">
+                        <div class="operator-symbol">+</div>
+                        <h4>Adição</h4>
+                        <p>5 + 3 = 8</p>
+                    </div>
+                    <div class="operator-card">
+                        <div class="operator-symbol">-</div>
+                        <h4>Subtração</h4>
+                        <p>10 - 4 = 6</p>
+                    </div>
+                    <div class="operator-card">
+                        <div class="operator-symbol">*</div>
+                        <h4>Multiplicação</h4>
+                        <p>7 * 3 = 21</p>
+                    </div>
+                    <div class="operator-card">
+                        <div class="operator-symbol">/</div>
+                        <h4>Divisão</h4>
+                        <p>15 / 3 = 5</p>
+                    </div>
+                    <div class="operator-card">
+                        <div class="operator-symbol">%</div>
+                        <h4>Resto (Módulo)</h4>
+                        <p>17 % 5 = 2</p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Exemplo Prático:</h3>
+                    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 10, b = 3;
+
+    cout &lt;&lt; "Soma: " &lt;&lt; (a + b) &lt;&lt; endl;      // 13
+    cout &lt;&lt; "Subtração: " &lt;&lt; (a - b) &lt;&lt; endl;  // 7
+    cout &lt;&lt; "Produto: " &lt;&lt; (a * b) &lt;&lt; endl;    // 30
+    cout &lt;&lt; "Divisão: " &lt;&lt; (a / b) &lt;&lt; endl;   // 3
+    cout &lt;&lt; "Resto: " &lt;&lt; (a % b) &lt;&lt; endl;     // 1
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Operadores Relacionais -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2 class="slide-title">1.4 Operadores Relacionais</h2>
+
+                <div class="content-section">
+                    <p>Comparam dois valores e retornam <strong>true</strong> ou <strong>false</strong></p>
+
+                    <div class="comparison-table">
+                        <div class="comparison-row">
+                            <div class="comp-op">==</div>
+                            <div class="comp-name">Igual a</div>
+                            <div class="comp-example">5 == 5 → true</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-op">!=</div>
+                            <div class="comp-name">Diferente de</div>
+                            <div class="comp-example">5 != 3 → true</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-op">&gt;</div>
+                            <div class="comp-name">Maior que</div>
+                            <div class="comp-example">7 &gt; 5 → true</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-op">&lt;</div>
+                            <div class="comp-name">Menor que</div>
+                            <div class="comp-example">3 &lt; 5 → true</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-op">&gt;=</div>
+                            <div class="comp-name">Maior ou igual</div>
+                            <div class="comp-example">5 &gt;= 5 → true</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-op">&lt;=</div>
+                            <div class="comp-name">Menor ou igual</div>
+                            <div class="comp-example">3 &lt;= 5 → true</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int idade = 18;
+
+    if (idade &gt;= 18) {
+        cout &lt;&lt; "Maior de idade" &lt;&lt; endl;
+    }
+
+    if (idade != 17) {
+        cout &lt;&lt; "Não tem 17 anos" &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Operadores Lógicos -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2 class="slide-title">1.5 Operadores Lógicos</h2>
+
+                <div class="logic-operators">
+                    <div class="logic-card">
+                        <h3>&& (AND - E)</h3>
+                        <p><strong>TRUE</strong> se AMBAS condições são TRUE</p>
+                        <div class="truth-table">
+                            <p>true && true = true</p>
+                            <p>true && false = false</p>
+                            <p>false && false = false</p>
+                        </div>
+                    </div>
+
+                    <div class="logic-card">
+                        <h3>|| (OR - OU)</h3>
+                        <p><strong>TRUE</strong> se PELO MENOS UMA é TRUE</p>
+                        <div class="truth-table">
+                            <p>true || true = true</p>
+                            <p>true || false = true</p>
+                            <p>false || false = false</p>
+                        </div>
+                    </div>
+
+                    <div class="logic-card">
+                        <h3>! (NOT - NÃO)</h3>
+                        <p>Inverte o valor booleano</p>
+                        <div class="truth-table">
+                            <p>!true = false</p>
+                            <p>!false = true</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int idade = 20;
+    bool temCarteira = true;
+
+    // AND: Ambas devem ser verdadeiras
+    if (idade &gt;= 18 && temCarteira) {
+        cout &lt;&lt; "Pode dirigir!" &lt;&lt; endl;
+    }
+
+    // NOT: Inverte
+    if (!temCarteira) {
+        cout &lt;&lt; "Não pode dirigir" &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: IF/ELSE -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2 class="slide-title">1.6 Estrutura Condicional IF/ELSE</h2>
+
+                <div class="content-section">
+                    <h3>Sintaxe Básica:</h3>
+                    <div class="syntax-box">
+                        <pre><code>if (condição) {
+    // Código se TRUE
+} else {
+    // Código se FALSE
+}</code></pre>
+                    </div>
+
+                    <h3>Com múltiplas condições (else if):</h3>
+                    <div class="syntax-box">
+                        <pre><code>if (condição1) {
+    // Código 1
+} else if (condição2) {
+    // Código 2
+} else {
+    // Código padrão
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Exemplo: Sistema de Notas</h3>
+                    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    float nota = 7.5;
+
+    if (nota &gt;= 9.0) {
+        cout &lt;&lt; "Conceito A - Excelente!" &lt;&lt; endl;
+    } else if (nota &gt;= 7.0) {
+        cout &lt;&lt; "Conceito B - Bom!" &lt;&lt; endl;
+    } else if (nota &gt;= 5.0) {
+        cout &lt;&lt; "Conceito C - Regular" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Conceito D - Reprovado" &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: SWITCH -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2 class="slide-title">1.7 Estrutura SWITCH</h2>
+
+                <div class="content-section">
+                    <h3>Quando usar SWITCH?</h3>
+                    <p>Use quando tiver <strong>múltiplos valores específicos</strong> para comparar</p>
+
+                    <div class="syntax-box">
+                        <pre><code>switch (expressão) {
+    case valor1:
+        // Código
+        break;
+    case valor2:
+        // Código
+        break;
+    default:
+        // Código padrão
+}</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <p>⚠️ <strong>BREAK é essencial!</strong> Sem ele, executa o próximo case</p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Exemplo: Dia da Semana</h3>
+                    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int dia = 3;
+
+    switch (dia) {
+        case 1:
+            cout &lt;&lt; "Segunda-feira" &lt;&lt; endl;
+            break;
+        case 2:
+            cout &lt;&lt; "Terça-feira" &lt;&lt; endl;
+            break;
+        case 3:
+            cout &lt;&lt; "Quarta-feira" &lt;&lt; endl;
+            break;
+        default:
+            cout &lt;&lt; "Dia inválido" &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Mini-Desafio -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2 class="slide-title">Mini-Desafio de Sintaxe</h2>
+
+                <div class="challenge-box">
+                    <h3>🎯 Desafio:</h3>
+                    <p>Escreva a condição C++ completa para verificar se uma <strong>idade é maior ou igual a 18</strong> E o <strong>nome NÃO é "visitante"</strong></p>
+
+                    <div class="challenge-input">
+                        <label>Sua resposta:</label>
+                        <input type="text" id="challengeAnswer" placeholder="if (...)" />
+                        <button onclick="checkChallenge()">Verificar</button>
+                    </div>
+
+                    <div id="challengeFeedback" class="feedback hidden"></div>
+
+                    <div class="challenge-hint">
+                        <p><strong>💡 Dica:</strong> Use operador && e !=</p>
+                    </div>
+                </div>
+
+                <div class="challenge-solution hidden" id="challengeSolution">
+                    <h3>✅ Solução:</h3>
+                    <pre><code>if (idade &gt;= 18 && nome != "visitante")</code></pre>
+                    <ul>
+                        <li><code>idade &gt;= 18</code> - Verifica maioridade</li>
+                        <li><code>&&</code> - Ambas condições devem ser TRUE</li>
+                        <li><code>nome != "visitante"</code> - Verifica que não é visitante</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Struct -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content">
+                <h2 class="slide-title">2. A Estrutura struct em C++</h2>
+
+                <div class="content-section">
+                    <h3>O que é struct?</h3>
+                    <p>struct é um <strong>tipo de dado COMPOSTO</strong> que agrupa variáveis de <strong>DIFERENTES tipos</strong> em uma única unidade.</p>
+
+                    <div class="analogy-box">
+                        <h4>📋 Analogia:</h4>
+                        <p>struct é como uma <strong>FICHA DE CADASTRO</strong>: tem múltiplos campos (nome, CPF, endereço) em um só lugar.</p>
+                    </div>
+
+                    <h3>Sintaxe:</h3>
+                    <div class="syntax-box">
+                        <pre><code>struct NomeStruct {
+    TipoDado campo1;
+    TipoDado campo2;
+    // ...
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Exemplo: Struct Aluno</h3>
+                    <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Aluno {
+    string nome;
+    int matricula;
+    float nota;
+};
+
+int main() {
+    Aluno aluno1;  // Declarar variável
+
+    aluno1.nome = "João Silva";
+    aluno1.matricula = 12345;
+    aluno1.nota = 8.5;
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: Manipulação Struct -->
+        <div class="slide" data-slide="12">
+            <div class="slide-content">
+                <h2 class="slide-title">2.2 Manipulação de struct</h2>
+
+                <div class="content-section">
+                    <h3>Operador Ponto (.)</h3>
+                    <p>Use o <strong>operador ponto (.)</strong> para acessar membros da struct</p>
+
+                    <div class="syntax-box">
+                        <p><code>nomeVariavel.nomeCampo</code></p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Exemplo Completo:</h3>
+                    <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Aluno {
+    string nome;
+    int matricula;
+    float nota;
+};
+
+int main() {
+    Aluno aluno1;
+
+    // Atribuir valores
+    aluno1.nome = "João Silva";
+    aluno1.matricula = 12345;
+    aluno1.nota = 8.5;
+
+    // Acessar e exibir
+    cout &lt;&lt; "Nome: " &lt;&lt; aluno1.nome &lt;&lt; endl;
+    cout &lt;&lt; "Matrícula: " &lt;&lt; aluno1.matricula &lt;&lt; endl;
+    cout &lt;&lt; "Nota: " &lt;&lt; aluno1.nota &lt;&lt; endl;
+
+    // Usar em condicionais
+    if (aluno1.nota &gt;= 7.0) {
+        cout &lt;&lt; "Aprovado!" &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Fila FIFO -->
+        <div class="slide" data-slide="13">
+            <div class="slide-content">
+                <h2 class="slide-title">3. Estrutura de Dados: Fila (Queue)</h2>
+
+                <div class="content-section">
+                    <h3>Conceito FIFO</h3>
+                    <div class="fifo-box">
+                        <h4>FIFO = First-In, First-Out</h4>
+                        <p><strong>"O PRIMEIRO elemento a ENTRAR é o PRIMEIRO a SAIR"</strong></p>
+                    </div>
+
+                    <div class="comparison-box">
+                        <div class="comp-item">
+                            <h4>Fila (FIFO)</h4>
+                            <p>Primeiro a entrar → Primeiro a sair</p>
+                        </div>
+                        <div class="comp-item">
+                            <h4>Pilha (LIFO)</h4>
+                            <p>Último a entrar → Primeiro a sair</p>
+                        </div>
+                    </div>
+
+                    <h3>Importância:</h3>
+                    <ul>
+                        <li>📋 Gerenciamento de tarefas</li>
+                        <li>🖨️ Fila de impressão</li>
+                        <li>🌐 Requisições de servidor</li>
+                        <li>💾 Buffer de dados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: Analogia Fila -->
+        <div class="slide" data-slide="14">
+            <div class="slide-content">
+                <h2 class="slide-title">3.2 Analogia: Fila de Banco</h2>
+
+                <div class="analogy-section">
+                    <h3>🏦 Exemplo Perfeito de FIFO</h3>
+
+                    <div class="bank-queue">
+                        <div class="queue-step">
+                            <div class="step-num">1</div>
+                            <p>Maria chega primeiro → Entra na fila</p>
+                        </div>
+                        <div class="queue-step">
+                            <div class="step-num">2</div>
+                            <p>João chega depois → Entra atrás de Maria</p>
+                        </div>
+                        <div class="queue-step">
+                            <div class="step-num">3</div>
+                            <p>Ana chega por último → Entra atrás de João</p>
+                        </div>
+                        <div class="queue-step highlight">
+                            <div class="step-num">▶</div>
+                            <p><strong>Atendimento:</strong></p>
+                            <p>Maria (primeira) → João → Ana (última)</p>
+                        </div>
+                    </div>
+
+                    <h3>Outros Exemplos do Dia-a-Dia:</h3>
+                    <ul>
+                        <li>🖨️ Fila de Impressão: Documentos impressos na ordem enviada</li>
+                        <li>📞 Call Center: Chamadas atendidas por ordem de chegada</li>
+                        <li>🚗 Drive-thru: Carros atendidos na sequência</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: Operações Fila -->
+        <div class="slide" data-slide="15">
+            <div class="slide-content">
+                <h2 class="slide-title">3.3 Operações Básicas da Fila</h2>
+
+                <div class="operations-grid">
+                    <div class="operation-card">
+                        <h3>Enqueue</h3>
+                        <p class="op-subtitle">(Enfileirar)</p>
+                        <p><strong>ADICIONAR</strong> elemento no <strong>FINAL</strong> da fila</p>
+                        <div class="op-analogy">📍 Como: Nova pessoa entrando no final da fila</div>
+                    </div>
+
+                    <div class="operation-card">
+                        <h3>Dequeue</h3>
+                        <p class="op-subtitle">(Desenfileirar)</p>
+                        <p><strong>REMOVER</strong> elemento do <strong>INÍCIO</strong> da fila</p>
+                        <div class="op-analogy">📍 Como: Primeira pessoa sendo atendida</div>
+                    </div>
+
+                    <div class="operation-card">
+                        <h3>isEmpty</h3>
+                        <p><strong>VERIFICAR</strong> se fila está vazia</p>
+                        <p>Retorna: true/false</p>
+                    </div>
+
+                    <div class="operation-card">
+                        <h3>isFull</h3>
+                        <p><strong>VERIFICAR</strong> se fila está cheia</p>
+                        <p>Retorna: true/false</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 16: Implementação Conceitual -->
+        <div class="slide" data-slide="16">
+            <div class="slide-content">
+                <h2 class="slide-title">3.4 Implementação Conceitual</h2>
+
+                <div class="content-section">
+                    <h3>Dois Ponteiros/Índices:</h3>
+
+                    <div class="pointers-box">
+                        <div class="pointer-item">
+                            <h4>frente (início)</h4>
+                            <p>Aponta para o PRIMEIRO elemento</p>
+                            <p><strong>Dequeue remove aqui</strong></p>
+                        </div>
+                        <div class="pointer-item">
+                            <h4>traseira (fim)</h4>
+                            <p>Aponta para o ÚLTIMO elemento</p>
+                            <p><strong>Enqueue adiciona aqui</strong></p>
+                        </div>
+                    </div>
+
+                    <h3>Regras Fundamentais:</h3>
+                    <ul>
+                        <li>✅ Dequeue SEMPRE na FRENTE</li>
+                        <li>✅ Enqueue SEMPRE na TRASEIRA</li>
+                        <li>⚠️ frente == traseira == -1: Fila vazia</li>
+                        <li>⚠️ traseira == MAX-1: Fila cheia</li>
+                    </ul>
+                </div>
+
+                <div class="visual-representation">
+                    <h3>Visualização:</h3>
+                    <pre>Array: [  A  |  B  |  C  |  D  |     ]
+          ↑                  ↑
+       frente            traseira
+
+Enqueue('E'):
+Array: [  A  |  B  |  C  |  D  |  E  ]
+          ↑                       ↑
+       frente                 traseira
+
+Dequeue():
+Array: [     |  B  |  C  |  D  |  E  ]
+                ↑                 ↑
+             frente           traseira</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 17: Código Estrutura -->
+        <div class="slide" data-slide="17">
+            <div class="slide-content">
+                <h2 class="slide-title">Implementação C++ - Estrutura Básica</h2>
+
+                <div class="code-example full-height">
+                    <pre><code>#include &lt;iostream&gt;
+#define MAX 100
+using namespace std;
+
+// Definir struct Fila
+struct Fila {
+    int itens[MAX];
+    int frente;
+    int traseira;
+};
+
+// Inicializar fila vazia
+void inicializar(Fila &f) {
+    f.frente = -1;
+    f.traseira = -1;
+}
+
+// Verificar se vazia
+bool isEmpty(Fila f) {
+    return (f.frente == -1);
+}
+
+// Verificar se cheia
+bool isFull(Fila f) {
+    return (f.traseira == MAX - 1);
+}</code></pre>
+
+                    <div class="code-explanation">
+                        <p><strong>Explicação:</strong></p>
+                        <ul>
+                            <li>MAX: Tamanho máximo da fila</li>
+                            <li>frente = traseira = -1: Fila vazia</li>
+                            <li>isEmpty: Verifica se frente == -1</li>
+                            <li>isFull: Verifica se traseira == MAX-1</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 18: Função Enqueue -->
+        <div class="slide" data-slide="18">
+            <div class="slide-content">
+                <h2 class="slide-title">Implementação C++ - Função Enqueue</h2>
+
+                <div class="code-example full-height">
+                    <pre><code>// Adicionar elemento no final (Enqueue)
+void enqueue(Fila &f, int valor) {
+    // Verificar se fila está cheia
+    if (isFull(f)) {
+        cout &lt;&lt; "Erro: Fila cheia!" &lt;&lt; endl;
+        return;
+    }
+
+    // Se fila vazia, inicializar frente
+    if (isEmpty(f)) {
+        f.frente = 0;
+    }
+
+    // Incrementar traseira e adicionar
+    f.traseira++;
+    f.itens[f.traseira] = valor;
+
+    cout &lt;&lt; "Enfileirado: " &lt;&lt; valor &lt;&lt; endl;
+}</code></pre>
+
+                    <div class="code-explanation">
+                        <p><strong>Lógica Passo-a-Passo:</strong></p>
+                        <ol>
+                            <li>Verifica se fila cheia (traseira == MAX-1)</li>
+                            <li>Se vazia (frente == -1), inicializa frente = 0</li>
+                            <li>Incrementa traseira (traseira++)</li>
+                            <li>Adiciona valor na posição traseira</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 19: Função Dequeue -->
+        <div class="slide" data-slide="19">
+            <div class="slide-content">
+                <h2 class="slide-title">Implementação C++ - Função Dequeue</h2>
+
+                <div class="code-example full-height">
+                    <pre><code>// Remover elemento do início (Dequeue)
+int dequeue(Fila &f) {
+    // Verificar se fila está vazia
+    if (isEmpty(f)) {
+        cout &lt;&lt; "Erro: Fila vazia!" &lt;&lt; endl;
+        return -1;
+    }
+
+    // Pegar valor da frente
+    int valor = f.itens[f.frente];
+
+    // Se era único elemento, resetar
+    if (f.frente == f.traseira) {
+        f.frente = -1;
+        f.traseira = -1;
+    } else {
+        // Incrementar frente
+        f.frente++;
+    }
+
+    cout &lt;&lt; "Desenfileirado: " &lt;&lt; valor &lt;&lt; endl;
+    return valor;
+}</code></pre>
+
+                    <div class="code-explanation">
+                        <p><strong>Lógica:</strong></p>
+                        <ol>
+                            <li>Verifica se vazia (frente == -1)</li>
+                            <li>Pega valor na posição frente</li>
+                            <li>Se único elemento, reseta (frente = traseira = -1)</li>
+                            <li>Senão, incrementa frente (frente++)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 20: Atividade -->
+        <div class="slide" data-slide="20">
+            <div class="slide-content">
+                <h2 class="slide-title">Atividade 1 - Implementação de Struct e Fila</h2>
+
+                <div class="activity-box">
+                    <h3>📋 Instruções:</h3>
+                    <p>Crie o código C++ completo que:</p>
+                    <ol>
+                        <li>Defina uma struct chamada <strong>Tarefa</strong> com:
+                            <ul>
+                                <li>id (int)</li>
+                                <li>descricao (string)</li>
+                            </ul>
+                        </li>
+                        <li>No main(), declare uma variável do tipo Tarefa</li>
+                        <li>Peça ao usuário para inserir o id e a descrição</li>
+                        <li>Use if/else para verificar:
+                            <ul>
+                                <li>Se id > 0: Exiba os dados da tarefa</li>
+                                <li>Senão: Exiba "ID de Tarefa Inválido!"</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <div class="activity-button">
+                        <button onclick="showSolution()">Ver Solução</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 21: Solução -->
+        <div class="slide" data-slide="21">
+            <div class="slide-content">
+                <h2 class="slide-title">Atividade 1 - Solução Completa</h2>
+
+                <div class="code-example full-height">
+                    <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// Definir struct Tarefa
+struct Tarefa {
+    int id;
+    string descricao;
+};
+
+int main() {
+    // Declarar variável do tipo Tarefa
+    Tarefa tarefa1;
+
+    // Solicitar input do usuário
+    cout &lt;&lt; "=== CADASTRO DE TAREFA ===" &lt;&lt; endl;
+    cout &lt;&lt; "Digite o ID da tarefa: ";
+    cin &gt;&gt; tarefa1.id;
+
+    cin.ignore(); // Limpar buffer
+
+    cout &lt;&lt; "Digite a descrição: ";
+    getline(cin, tarefa1.descricao);
+
+    // Verificar validade do ID
+    if (tarefa1.id &gt; 0) {
+        cout &lt;&lt; "\n=== DADOS DA TAREFA ===" &lt;&lt; endl;
+        cout &lt;&lt; "ID: " &lt;&lt; tarefa1.id &lt;&lt; endl;
+        cout &lt;&lt; "Descrição: " &lt;&lt; tarefa1.descricao &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "\nID de Tarefa Inválido!" &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegação -->
+    <div class="navigation">
+        <button class="btn nav-btn prev" id="prevBtn" disabled>← Anterior</button>
+        <span class="slide-indicator" id="slideIndicator">Slide 1 de 20</span>
+        <button class="btn nav-btn next" id="nextBtn">Próximo →</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
