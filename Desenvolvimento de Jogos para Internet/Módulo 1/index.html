@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÓDULO 1 - Godot Engine e Jogos Digitais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-wrapper">
+            <div class="logo-area">
+                <div class="info-area">
+                    <img src="logo.png" alt="Logo da META" id="metaLogoImage">
+                </div>
+            </div>
+            <div class="progress-area">
+                <div class="progress-label" id="progressLabel">Slide 1 de 18</div>
+                <div class="progress-container">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- SLIDE 1: Capa -->
+        <div class="slide" data-slide="1">
+            <div class="title-page">
+                <h1 class="page-title">MÓDULO 1</h1>
+                <h2 class="page-subtitle">Fundamentos de Jogos Digitais e Godot Engine</h2>
+                <div class="page-icon">🎮</div>
+                <p class="page-description">Material autodidata completo para iniciantes em desenvolvimento de jogos</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Índice -->
+        <div class="slide" data-slide="2">
+            <h2 class="slide-title">Índice de Tópicos</h2>
+            <div class="index-grid">
+                <div class="index-item">
+                    <div class="index-num">1</div>
+                    <h3>Fundamentos de Jogos</h3>
+                    <p>História e conceitos essenciais</p>
+                </div>
+                <div class="index-item">
+                    <div class="index-num">2</div>
+                    <h3>Godot Engine</h3>
+                    <p>Nós, Cenas e Scripts</p>
+                </div>
+                <div class="index-item">
+                    <div class="index-num">3</div>
+                    <h3>Ciclo de Vida</h3>
+                    <p>_ready(), _process(), _physics_process()</p>
+                </div>
+                <div class="index-item">
+                    <div class="index-num">4</div>
+                    <h3>Sinais (Signals)</h3>
+                    <p>Comunicação entre nós</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: História dos Jogos -->
+        <div class="slide" data-slide="3">
+            <h2 class="slide-title">1. Fundamentos de Jogos Digitais - História</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1972</div>
+                    <div class="timeline-content">
+                        <h4>Pong</h4>
+                        <p>Primeiro jogo arcade popular - revolucionou o entretenimento</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1980s</div>
+                    <div class="timeline-content">
+                        <h4>Era Arcade</h4>
+                        <p>Pac-Man, Donkey Kong - jogos 2D em salas de jogo</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1983-1985</div>
+                    <div class="timeline-content">
+                        <h4>Consoles Caseiros</h4>
+                        <p>NES, Sega - trazem jogos para dentro de casa</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1990s</div>
+                    <div class="timeline-content">
+                        <h4>Era 3D</h4>
+                        <p>Super Mario 64, Quake - revolução gráfica</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2000s-Atual</div>
+                    <div class="timeline-content">
+                        <h4>Era Online</h4>
+                        <p>MMOs, Redes, Mobile Gaming, eSports</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Conceito de Jogo Digital -->
+        <div class="slide" data-slide="4">
+            <h2 class="slide-title">1.2 O que é um Jogo Digital?</h2>
+            <div class="concept-cards">
+                <div class="concept-card">
+                    <div class="concept-icon">🎯</div>
+                    <h3>Objetivo</h3>
+                    <p>Meta clara que o jogador deve alcançar (vencer, pontuar, explorar)</p>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">📏</div>
+                    <h3>Regras</h3>
+                    <p>Limitações que definem o que é permitido e proibido</p>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">🎮</div>
+                    <h3>Interação</h3>
+                    <p>Jogador interage através de controles/mouse/teclado</p>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">💬</div>
+                    <h3>Feedback</h3>
+                    <p>Sistema responde às ações (sons, efeitos, placar)</p>
+                </div>
+            </div>
+
+            <div class="info-box highlight">
+                <h3>💡 Fórmula Básica</h3>
+                <p><strong>Jogo = Objetivo + Regras + Interação + Feedback</strong></p>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Curiosidade Marco -->
+        <div class="slide" data-slide="5">
+            <h2 class="slide-title">1.3 Curiosidade: Primeiro 3D Popular</h2>
+            <div class="curiosity-box">
+                <div class="curiosity-icon">🌟</div>
+                <h3>Super Mario 64 (1996)</h3>
+                <p>Lançado com o Nintendo 64, foi o primeiro jogo 3D de plataforma de grande sucesso. Revolucionou a indústria ao permitir câmera 3D controlável pelo jogador e movimento livre em ambientes 3D.</p>
+                <div class="curiosity-impact">
+                    <p><strong>Impacto:</strong> Inspirou gerações de desenvolvedores e definiu o padrão para jogos 3D nos próximos 20 anos. Muitos dos conceitos de design estabelecidos em Mario 64 são ainda usados hoje.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Godot - Nó -->
+        <div class="slide" data-slide="6">
+            <h2 class="slide-title">2. Fundamentos da Godot Engine - Nós (Nodes)</h2>
+            <div class="content-block">
+                <h3>Tudo é um Nó!</h3>
+                <p>Na Godot, <strong>Nó é o bloco de construção fundamental</strong>. Nós são objetos que compõem seu jogo e são organizados em uma <strong>árvore hierárquica</strong>.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Tipos de Nós Comuns:</h3>
+                <ul>
+                    <li><strong>Node2D:</strong> Base para jogos 2D (posição, rotação, escala)</li>
+                    <li><strong>Sprite:</strong> Exibe uma imagem 2D</li>
+                    <li><strong>CollisionShape2D:</strong> Define área de colisão</li>
+                    <li><strong>Button:</strong> Botão interativo</li>
+                    <li><strong>Label:</strong> Exibe texto</li>
+                    <li><strong>AudioStreamPlayer:</strong> Reproduz sons</li>
+                </ul>
+            </div>
+
+            <div class="tree-visual">
+                <p><strong>Exemplo de Árvore de Nós:</strong></p>
+                <pre>Cena (Scene)
+├── Player (Node2D)
+│   ├── Sprite
+│   └── CollisionShape2D
+├── Enemy (Node2D)
+│   ├── Sprite
+│   └── CollisionShape2D
+└── UI (CanvasLayer)
+    ├── Label (Score)
+    └── Button (Play)</pre>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Godot - Cenas -->
+        <div class="slide" data-slide="7">
+            <h2 class="slide-title">2.2 Cenas (Scenes)</h2>
+            <div class="content-block">
+                <h3>Cena = Coleção de Nós Organizados</h3>
+                <p>Uma <strong>Cena</strong> é um grupo de nós relacionados, salvos como uma unidade reutilizável. São as peças fundamentais do seu jogo.</p>
+            </div>
+
+            <div class="analogy-box">
+                <h3>📋 Analogia: Cena de Teatro</h3>
+                <div class="analogy-content">
+                    <p><strong>Cena de Teatro:</strong> Um palco em uma peça teatral</p>
+                    <ul>
+                        <li>🎭 <strong>Atores</strong> = Nós (jogadores, inimigos)</li>
+                        <li>🎪 <strong>Cenário</strong> = Nós (fondos, obstáculos)</li>
+                        <li>💡 <strong>Luzes</strong> = Nós (iluminação, efeitos)</li>
+                        <li>🎵 <strong>Som</strong> = Nós (áudio, música)</li>
+                    </ul>
+                    <p><strong>Resultado:</strong> Todos os elementos juntos formam uma experiência coerente!</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>Exemplos de Cenas em um Jogo:</h3>
+                <ul>
+                    <li>Cena "Menu Principal"</li>
+                    <li>Cena "Fase 1" (com player, inimigos, obstáculos)</li>
+                    <li>Cena "Game Over"</li>
+                    <li>Cena "Personagem Inimigo" (reutilizável)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: Godot - Scripts -->
+        <div class="slide" data-slide="8">
+            <h2 class="slide-title">2.3 Scripts (GDScript)</h2>
+            <div class="content-block">
+                <h3>Scripts = Comportamento dos Nós</h3>
+                <p><strong>Scripts</strong> são anexados a nós para fornecer <strong>lógica e comportamento</strong>. GDScript é a linguagem nativa da Godot (sintaxe similar a Python).</p>
+            </div>
+
+            <div class="code-example">
+                <h3>Exemplo Básico de GDScript:</h3>
+                <pre><code>extends Node2D
+
+func _ready():
+    print("Jogo iniciado!")
+
+func _process(delta):
+    # Lógica do jogo a cada frame
+    pass</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>Script = Instruções para o Nó:</h3>
+                <ul>
+                    <li>Define como o nó se comporta</li>
+                    <li>Responde a eventos (clique, colisão, etc)</li>
+                    <li>Interage com outros nós</li>
+                    <li>Gerencia lógica do jogo</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Ciclo de Vida - _ready() -->
+        <div class="slide" data-slide="9">
+            <h2 class="slide-title">3. Ciclo de Vida do Nó - func _ready()</h2>
+            <div class="lifecycle-box">
+                <h3>Quando é chamada?</h3>
+                <p>Apenas <strong>UMA VEZ</strong> quando o nó e todos os seus filhos estão carregados e prontos.</p>
+
+                <h3>Uso Prático:</h3>
+                <ul>
+                    <li>✅ Inicializar variáveis</li>
+                    <li>✅ Definir posição inicial</li>
+                    <li>✅ Conectar sinais</li>
+                    <li>✅ Carregar recursos</li>
+                </ul>
+            </div>
+
+            <div class="code-example">
+                <h3>Exemplo GDScript:</h3>
+                <pre><code>extends Node2D
+
+var velocidade = 200
+var posicao_inicial = Vector2(100, 100)
+
+func _ready():
+    print("Nó iniciado!")
+    position = posicao_inicial
+    print("Posição definida: ", position)</code></pre>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Ciclo de Vida - _process() -->
+        <div class="slide" data-slide="10">
+            <h2 class="slide-title">3.2 Ciclo de Vida - func _process(delta)</h2>
+            <div class="lifecycle-box">
+                <h3>Quando é chamada?</h3>
+                <p><strong>A CADA FRAME</strong> (o mais rápido possível - 60fps ou mais)</p>
+
+                <h3>Parâmetro delta:</h3>
+                <p><strong>delta</strong> = tempo decorrido desde o último frame (em segundos)</p>
+                <p>📌 <strong>Essencial para frame-rate independence:</strong> garante movimento suave independente do FPS</p>
+            </div>
+
+            <div class="code-example">
+                <h3>Exemplo: Movimento Independente de FPS</h3>
+                <pre><code>extends Node2D
+
+var velocidade = 200  # pixels por segundo
+
+func _process(delta):
+    # SEM delta (ERRADO): movimento irregular
+    # position.x += 5  # ❌ Depende de FPS
+
+    # COM delta (CORRETO): movimento suave
+    position.x += velocidade * delta  # ✅ Independente de FPS</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>Usos de _process():</h3>
+                <ul>
+                    <li>Entrada do jogador (controles)</li>
+                    <li>Animações</li>
+                    <li>Lógica geral (não física)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Ciclo de Vida - _physics_process() -->
+        <div class="slide" data-slide="11">
+            <h2 class="slide-title">3.3 Ciclo de Vida - func _physics_process(delta)</h2>
+            <div class="lifecycle-box">
+                <h3>Quando é chamada?</h3>
+                <p>Em <strong>intervalo de tempo FIXO</strong> (60 vezes por segundo por padrão)</p>
+
+                <h3>Para quê?</h3>
+                <p>Exclusivamente para <strong>lógica FÍSICA</strong> (movimento de corpos, colisões)</p>
+            </div>
+
+            <div class="code-example">
+                <h3>Exemplo: Movimento com Física</h3>
+                <pre><code>extends RigidBody2D
+
+var velocidade = Vector2.ZERO
+var aceleracao = 500
+
+func _physics_process(delta):
+    # Aplicar aceleração
+    velocidade.y += aceleracao * delta
+
+    # Mover corpo físico
+    velocity = velocidade
+    move_and_slide()</code></pre>
+            </div>
+
+            <div class="info-box comparison">
+                <h3>_process() vs _physics_process()</h3>
+                <table>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>_process()</th>
+                        <th>_physics_process()</th>
+                    </tr>
+                    <tr>
+                        <td>Frequência</td>
+                        <td>Variável (FPS do monitor)</td>
+                        <td>Fixa (60x por segundo)</td>
+                    </tr>
+                    <tr>
+                        <td>Uso</td>
+                        <td>Lógica geral, animação, entrada</td>
+                        <td>Movimento físico, colisões</td>
+                    </tr>
+                    <tr>
+                        <td>Consistência</td>
+                        <td>Pode variar</td>
+                        <td>Sempre consistente</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: Sinais - Introdução -->
+        <div class="slide" data-slide="12">
+            <h2 class="slide-title">4. Comunicação entre Nós: Sinais (Signals)</h2>
+            <div class="content-block">
+                <h3>O que são Sinais?</h3>
+                <p><strong>Sinais</strong> são uma forma de <strong>comunicação desacoplada</strong> na Godot. Um nó <strong>emite um sinal</strong> quando algo acontece, e outros nós que estão <strong>conectados</strong> a ele podem <strong>receber e reagir</strong>.</p>
+            </div>
+
+            <div class="signal-flow">
+                <div class="flow-step">1. Nó emite sinal</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">2. Outros nós "escutam"</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">3. Função é chamada</div>
+            </div>
+
+            <div class="analogy-box">
+                <h3>📢 Analogia: Sistema de Alarme</h3>
+                <ul>
+                    <li>🔔 <strong>Sensor</strong> (nó que emite): Detecta movimento</li>
+                    <li>📡 <strong>Sinal</strong>: "Movimento detectado!"</li>
+                    <li>🔊 <strong>Receptor</strong> (nó que escuta): Toca alarme</li>
+                </ul>
+                <p>Sensor não precisa saber quem vai ouvir - apenas emite o sinal!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Sinais - Exemplo Prático -->
+        <div class="slide" data-slide="13">
+            <h2 class="slide-title">4.2 Sinais - Exemplo Prático: Button</h2>
+            <div class="content-block">
+                <h3>Exemplo: Botão "Iniciar Jogo"</h3>
+                <p>Quando o botão é pressionado, ele emite o sinal <strong>button_pressed</strong></p>
+            </div>
+
+            <div class="code-example">
+                <h3>Script do Nó Principal (Manager):</h3>
+                <pre><code>extends Node2D
+
+var botao_iniciar
+
+func _ready():
+    # Referência ao botão
+    botao_iniciar = $VBoxContainer/BotaoIniciar
+
+    # Conectar sinal: quando botão pressionado,
+    # chama função _on_botao_iniciar_pressed()
+    botao_iniciar.connect("pressed", self, "_on_botao_iniciar_pressed")
+
+func _on_botao_iniciar_pressed():
+    print("Botão pressionado!")
+    print("Iniciando jogo...")
+    # Lógica para iniciar o jogo</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>Estrutura:</h3>
+                <ul>
+                    <li><strong>connect():</strong> Conecta nó ao sinal</li>
+                    <li><strong>"pressed":</strong> Nome do sinal</li>
+                    <li><strong>self:</strong> Quem vai receber</li>
+                    <li><strong>"_on_botao_iniciar_pressed":</strong> Função a chamar</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: Sinais - Desacoplamento -->
+        <div class="slide" data-slide="14">
+            <h2 class="slide-title">4.3 Por que Sinais são Poderosos?</h2>
+            <div class="advantage-cards">
+                <div class="advantage-card">
+                    <div class="adv-icon">🔌</div>
+                    <h3>Desacoplamento</h3>
+                    <p>Nós não precisam saber um do outro</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="adv-icon">🔄</div>
+                    <h3>Flexibilidade</h3>
+                    <p>Múltiplos nós podem reagir ao mesmo sinal</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="adv-icon">♻️</div>
+                    <h3>Reutilização</h3>
+                    <p>Componentes são reutilizáveis em outras cenas</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="adv-icon">🧩</div>
+                    <h3>Modularidade</h3>
+                    <p>Código mais organizado e fácil de manter</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: Resumo Godot -->
+        <div class="slide" data-slide="15">
+            <h2 class="slide-title">Resumo: Estrutura da Godot</h2>
+            <div class="summary-structure">
+                <div class="structure-level">
+                    <div class="level-name">Nós (Nodes)</div>
+                    <p>Blocos de construção básicos</p>
+                </div>
+                <div class="structure-arrow">▼</div>
+                <div class="structure-level">
+                    <div class="level-name">Cenas (Scenes)</div>
+                    <p>Coleções de nós organizados</p>
+                </div>
+                <div class="structure-arrow">▼</div>
+                <div class="structure-level">
+                    <div class="level-name">Scripts (GDScript)</div>
+                    <p>Comportamento e lógica</p>
+                </div>
+                <div class="structure-arrow">▼</div>
+                <div class="structure-level">
+                    <div class="level-name">Sinais (Signals)</div>
+                    <p>Comunicação entre componentes</p>
+                </div>
+            </div>
+
+            <div class="info-box highlight">
+                <p><strong>Fórmula do Jogo na Godot:</strong> Nós + Cenas + Scripts + Sinais = Jogo Interativo</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 16: Projeto Exemplo -->
+        <div class="slide" data-slide="16">
+            <h2 class="slide-title">Projeto Exemplo: Jogo Simples</h2>
+            <div class="project-example">
+                <h3>Componentes do Jogo "Catch the Coins":</h3>
+                <div class="components-list">
+                    <div class="component">
+                        <h4>Cena: Player (Jogador)</h4>
+                        <ul>
+                            <li>Nó: Node2D</li>
+                            <li>Nó filho: Sprite (imagem do player)</li>
+                            <li>Nó filho: CollisionShape2D</li>
+                            <li>Script: player.gd (controla movimento)</li>
+                        </ul>
+                    </div>
+                    <div class="component">
+                        <h4>Cena: Coin (Moeda)</h4>
+                        <ul>
+                            <li>Nó: Node2D</li>
+                            <li>Nó filho: Sprite (imagem da moeda)</li>
+                            <li>Nó filho: Area2D (detecta colisão)</li>
+                            <li>Script: coin.gd (emite sinal "coletada")</li>
+                        </ul>
+                    </div>
+                    <div class="component">
+                        <h4>Cena: Main (Principal)</h4>
+                        <ul>
+                            <li>Nó: Node2D</li>
+                            <li>Nó filho: Player</li>
+                            <li>Nó filho: CoinSpawner (gera moedas)</li>
+                            <li>Nó filho: UI (placar)</li>
+                            <li>Script: main.gd (gerencia o jogo)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 17: Próximas Etapas -->
+        <div class="slide" data-slide="17">
+            <h2 class="slide-title">Próximos Passos no Desenvolvimento</h2>
+            <div class="next-steps">
+                <div class="step-card">
+                    <div class="step-icon">📚</div>
+                    <h3>Aprofunde em GDScript</h3>
+                    <p>Variáveis, loops, funções, classes</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🎨</div>
+                    <h3>Gráficos e Animações</h3>
+                    <p>Sprites, AnimatedSprite, Tween</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🔊</div>
+                    <h3>Áudio e Efeitos</h3>
+                    <p>Sons, música, feedback de áudio</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🧠</div>
+                    <h3>IA e Lógica de Jogo</h3>
+                    <p>Inimigos, obstáculos, desafios</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">📱</div>
+                    <h3>Publicação</h3>
+                    <p>Exportar para Web, Desktop, Mobile</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🎮</div>
+                    <h3>Criar seu Próprio Jogo!</h3>
+                    <p>Aplicar tudo que aprendeu</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 18: Conclusão -->
+        <div class="slide" data-slide="18">
+            <div class="conclusion-page">
+                <h2>🎉 Parabéns!</h2>
+                <h3>Você completou o Módulo 1</h3>
+                <div class="conclusion-box">
+                    <p>Você agora compreende:</p>
+                    <ul>
+                        <li>✅ História e conceitos de jogos digitais</li>
+                        <li>✅ Estrutura fundamental da Godot Engine</li>
+                        <li>✅ Como nós, cenas e scripts funcionam</li>
+                        <li>✅ Ciclo de vida dos nós (_ready, _process, _physics_process)</li>
+                        <li>✅ Como usar sinais para comunicação entre componentes</li>
+                    </ul>
+                    <p class="next-module"><strong>Próximo:</strong> Módulo 2 - Aprofundando em GDScript e Desenvolvimento Prático</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="footer">
+        <button class="nav-btn prev-btn" id="prevBtn" disabled>← Anterior</button>
+        <span class="slide-counter" id="slideCounter">Slide 1 de 18</span>
+        <button class="nav-btn next-btn" id="nextBtn">Próximo →</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
