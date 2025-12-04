@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Prático - DDL, DML, DQL</title>
+    <link rel="stylesheet" href="sql_style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header com logo e progresso -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo-placeholder">
+                    <span class="logo-text">META</span>
+                </div>
+                <span class="logo-label">CENTRO UNIVERSITÁRIO</span>
+            </div>
+            <div class="header-right">
+                <span class="slide-counter"><span id="currentSlide">1</span> de <span id="totalSlides">22</span></span>
+            </div>
+        </header>
+
+        <!-- Barra de progresso -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Conteúdo principal dos slides -->
+        <main class="main-content">
+            <div class="slides-container" id="slidesContainer">
+                <!-- Slides serão injetados aqui pelo JavaScript -->
+            </div>
+        </main>
+
+        <!-- Navegação -->
+        <footer class="footer">
+            <div class="footer-content">
+                <span class="slide-info"><span id="slideNumber">1</span> de <span id="slideTotalNumber">22</span></span>
+                <div class="nav-buttons">
+                    <button class="nav-btn prev-btn" id="prevBtn" onclick="previousSlide()">
+                        <span class="btn-label">← Anterior</span>
+                    </button>
+                    <button class="nav-btn next-btn" id="nextBtn" onclick="nextSlide()">
+                        <span class="btn-label">Próximo →</span>
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="sql_script.js"></script>
+</body>
+</html>
